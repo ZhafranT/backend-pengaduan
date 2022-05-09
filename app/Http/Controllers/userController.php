@@ -42,7 +42,7 @@ class userController extends Controller
             'firstName' => 'required|string|min:2|max:25',
             'lastName' => 'string|min:2|max:25',
             'alamat' => 'required|string|min:10',
-            'noTelp' => 'required|string|min:10|max:12|starts_with:0',
+            'noTelp' => 'required|string|min:10|max:12|starts_with:0|unique:users',
             'gender' => 'required|in:pria,wanita',
             'tglLahir' => 'required',
             'password' => 'required|string|min:6|confirmed',

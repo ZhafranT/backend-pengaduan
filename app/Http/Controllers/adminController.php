@@ -11,12 +11,18 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
+
 class adminController extends Controller
 {
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-
+        config()->set( 'auth.defaults.guard', 'admins' );
+        \Config::set('jwt.user', 'App\Admin'); 
+        \Config::set('auth.providers.admins.model', \App\Models\Admin::class);
+		$credentials = $request->only('email', 'password');
+		$token = null;
+        // $credentials = $request->only('email', 'password');
+        // $token=null;
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
                 return response()->json(['error' => 'invalid_credentials'], 400);
@@ -36,7 +42,7 @@ class adminController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|string|email|max:30|unique:users',
+            'email' => 'required|string|email|max:30|unique:admins',
             'firstName' => 'required|string|min:2|max:25',
             'lastName' => 'string|min:2|max:25',
             'alamat' => 'required|string|min:10',
