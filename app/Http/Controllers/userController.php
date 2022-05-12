@@ -98,6 +98,4 @@ class userController extends Controller
 
         return response()->json(compact('user'));
     }
-
-
 }
