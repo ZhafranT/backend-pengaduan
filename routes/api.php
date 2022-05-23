@@ -19,8 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/test',[userController::class,'index']);
-Route::get('/test1/{req}',[userController::class,'minta']);
 Route::post('/test1',[userController::class,'body'])->middleware('jwt.verify');
 Route::post('/login',[userController::class,'login']);
 Route::post('/register',[userController::class,'register']);

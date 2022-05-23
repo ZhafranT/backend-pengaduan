@@ -9,7 +9,7 @@ class Berita extends Model
 {
     use HasFactory;
     public function berita(){
-        return $this->belongsTo(Admin::class);
+        return $this->belongsTo(Admin::class, 'admin_id');
     }
     public function berita2(){
         return $this->hasOne(Admin::class);
@@ -17,6 +17,7 @@ class Berita extends Model
     protected $fillable = [
         'admin_id',
         'judulBerita',
+        'photo',
         'isiBerita',
     ];
 }

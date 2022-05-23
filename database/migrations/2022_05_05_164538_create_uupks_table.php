@@ -18,12 +18,13 @@ return new class extends Migration
             $table->foreignId('admin_id');
             $table->foreign('admin_id')
               ->references('id')->on('admins')->onDelete('cascade');
-            $table->string('noUU');
-            $table->string('tanggalUU');
-            $table->string('judulUU');
-            $table->string('isiUU');
+            $table->string('nomorUU');
+            $table->string('bab');
+            $table->string('judulBab');
+            $table->string('pasal');
             $table->timestamps();
         });
+        DB::statement("ALTER TABLE uupks ADD isi BLOB");
     }
 
     /**
