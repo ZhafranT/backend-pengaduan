@@ -14,5 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('loginadmin');
+    // return view('pengaduan');
+    // return view('jawabpengaduan'); 
+    // return view('berita');
+    // return view('inputberita');
+    // return view('uupk');           
+    // return view('inputuupk');      
+    // return view('editberita');
+    // return view('edituupk');       
+    // return view('test');
+    return view('pengaduanprocess');
+    // return view('pengaduanmediasi');
+    // return view('pengaduandone');
 });
