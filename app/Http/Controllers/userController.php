@@ -16,6 +16,10 @@ class userController extends Controller
 {
     public function login(Request $request)
     {
+        config()->set( 'auth.defaults.guard', 'user' );
+        // \Config::set('jwt.user', 'App\User'); 
+        // \Config::set('auth.providers.users.model', \App\Models\User::class);
+
         $credentials = $request->only('email', 'password');
 
         try {

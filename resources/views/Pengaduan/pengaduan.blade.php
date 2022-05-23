@@ -1,62 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pengaduan - Layanan Kementrian Perdagangan</title>
+@extends('layout.main')
 
-    {{-- MATERIAL CDN --}}
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
-    <link rel="stylesheet" href="../styles/styles.css"> 
-</head>
-<body>
-{{-- SIDEBAR --}}
-    <div class="containers">
-        <aside>
-            <div class="top">
-                <div class="logo">
-                    <a href="/pengaduan">
-                        <img src="../asset/logo-kemendag.png">
-                    </a>
-                </div>
-                <div class="close" id="close-btn">
-                    <span class="material-icons-sharp">close</span>
-                </div>
-            </div>
+@section('title', 'Halaman Pengaduan')
 
-            <div class="sidebar">
-                <a class="profile-bar">
-                    <img class="profile-pict" src="../asset/profil-pict3.png">
-                    <h3>Dhika</h3>
-                </a>
-
-                <a href="/pengaduan">
-                    <span class="material-icons-sharp">receipt_long</span>
-                    <h3>Pengaduan</h3>
-                </a>
-                <a href="/berita" class="active">
-                    <span class="material-icons-sharp">newspaper</span>
-                    <h3>Berita</h3>
-                </a>
-                <a href="/uupk">
-                    <span class="material-icons-sharp">list_alt</span>
-                    <h3>UU PK</h3>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">bar_chart</span>
-                    <h3>Statistik</h3>
-                </a>
-                <a href="/loginadmin">
-                    <span class="material-icons-sharp">logout</span>
-                    <h3>Logout</h3>
-                </a>
-            </div>
-        </aside>
-        {{-- END OF SIDEBAR --}}
+@section('container')
         <main>
             <h2>Overview</h2>
-
+            @foreach ($dtHome as $item)
+            <h3>Selamat Datang, {{ $item->name }}</h3>
+            @endforeach
             <div class="date">
                 <input type="date">
             </div>
@@ -148,6 +99,4 @@
                 </table>
             </div>
         </main>
-    </div>
-</body>
-</html>
+@endsection

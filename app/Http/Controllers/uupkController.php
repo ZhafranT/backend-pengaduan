@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Berita;
+use App\Models\Uupk;
 
-class newsController extends Controller
+class uupkController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class newsController extends Controller
      */
     public function index()
     {
-        $dtBerita = Berita::with('berita')->get();
-        return view('News.cobaberita',compact('dtBerita'));
+        $dtUupk = Uupk::paginate(10);
+        return view('Uupk.uupk',compact('dtUupk'));
     }
 
     /**
@@ -25,7 +25,7 @@ class newsController extends Controller
      */
     public function create()
     {
-        return view('News.inputberita');
+        return view('Uupk.inputuupk');
     }
 
     /**
@@ -36,18 +36,16 @@ class newsController extends Controller
      */
     public function store(Request $request)
     {
-        $type = $request->file('photoberita')->extension();
-        $imagedata = file_get_contents($request->file('photoberita'));
-        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($imagedata);
-        // dd($base64);
-        Berita::create([
+        Uupk::create([
             'admin_id' => auth()->id(),
-            'judulBerita' => $request->judul,
-            'photo' => $base64,
-            'isiBerita' => $request->isi,
+            'nomorUU' => $request->nomorUU,
+            'bab' => $request->bab,
+            'judulBab' => $request->judulBab,
+            'pasal' => $request->pasal,
+            'isi' => $request->isi,
         ]);
 
-        return redirect('cobaberita')->with('success', 'Berita Berhasil Dibuat!');
+        return redirect('uupk')->with('success', 'Berita Berhasil Dibuat!');
     }
 
     /**
@@ -69,9 +67,9 @@ class newsController extends Controller
      */
     public function edit($id)
     {
-        $ber = Berita::findorfail($id);
+        $uup = Uupk::findorfail($id);
         // dd($ber);
-        return view('News.editberita',compact('ber'));
+        return view('Uupk.edituupk',compact('uup'));
     }
 
     /**
@@ -83,10 +81,10 @@ class newsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ber = Berita::findorfail($id);
-        $ber->update($request->all());
+        $uup = Uupk::findorfail($id);
+        $uup->update($request->all());
         // dd($ber);
-        return redirect('cobaberita')->with('success', 'Berita Berhasil Diubah!');
+        return redirect('uupk')->with('success', 'UU Berhasil Diubah!');
     }
 
     /**
@@ -97,8 +95,8 @@ class newsController extends Controller
      */
     public function destroy($id)
     {
-        $ber = Berita::findorfail($id);
-        $ber->delete();
-        return back()->with('info', 'Berita Berhasil Dihapus!');;
+        $uup = Uupk::findorfail($id);
+        $uup->delete();
+        return back()->with('info', 'UU Berhasil Dihapus!');;
     }
 }

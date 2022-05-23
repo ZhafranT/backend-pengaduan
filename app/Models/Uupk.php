@@ -16,9 +16,10 @@ class Uupk extends Model
     }
     protected $fillable = [
         'admin_id',
-        'noUU',
-        'tanggalUU',
-        'judulUU',
-        'isiUU',
+        'nomorUU',
+        'bab',
+        'judulBab',
+        'pasal',
+        'isi',
     ];
 }
