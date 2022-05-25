@@ -1,7 +1,5 @@
 @extends('layout.main')
 
-@section('title', 'Input UU Pengaduan Konsumen')
-
 @section('container')
         <main>
             <div class="input-uupk-baru">

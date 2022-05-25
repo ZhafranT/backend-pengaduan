@@ -1,7 +1,5 @@
 @extends('layout.main')
 
-@section('title', 'Halaman Daftar UU Pengaduan Konsumen')
-
 @section('container')
     <div class="card-body">
         <h1>Daftar UU Pengaduan Konsumen</h1>
@@ -23,8 +21,8 @@
                 <td>{{ $item->pasal }}</td>
                 <td>{{ $item->isi }}</td>
                 <td>
-                    <a class="badge bg-primary" href="{{ url('edituupk', $item->id) }}">edit</a> | 
-                    <a class="badge bg-danger" href="{{ url('deleteuupk', $item->id) }}" onclick="return confirm('Are you sure?')">delete</a>
+                    <a class="bi bi-pencil-square" href="{{ url('edituupk', $item->id) }}"></a> | 
+                    <a class="bi bi-trash-fill" href="{{ url('deleteuupk', $item->id) }}" onclick="return confirm('Are you sure?')"></a>
                 </td>
             </tr>
             @endforeach

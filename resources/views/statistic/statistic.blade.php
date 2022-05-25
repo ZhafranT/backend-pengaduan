@@ -1,10 +1,7 @@
 @extends('layout.main')
 
-@section('title', 'Halaman Pengaduan')
-
 @section('container')
-    <main>
-        <h2>Halaman Statistik</h2>
+        <h2>Statistik Pengaduan Konsumen</h2>
 
         <div class="container">
             <div class="row">
@@ -41,7 +38,7 @@
             const data = {
               labels: labels,
               datasets: [{
-                label: 'Data Laporan Pengaduan Masuk',
+                label: 'Data Laporan Pengaduan Masuk Tahun 2022',
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: [0, 10, 5, 2, 20, 30, 45],
@@ -67,5 +64,4 @@
             config
           );
         </script> --}}
-    </main>
 @endsection

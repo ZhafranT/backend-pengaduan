@@ -15,7 +15,9 @@ class newsController extends Controller
     public function index()
     {
         $dtBerita = Berita::with('berita')->get();
-        return view('News.cobaberita',compact('dtBerita'));
+        return view('News.berita', [
+            "title" => "Berita"
+        ], compact('dtBerita'));
     }
 
     /**
@@ -25,7 +27,9 @@ class newsController extends Controller
      */
     public function create()
     {
-        return view('News.inputberita');
+        return view('News.inputberita', [
+            "title" => "Input Berita"
+        ]);
     }
 
     /**
@@ -47,7 +51,7 @@ class newsController extends Controller
             'isiBerita' => $request->isi,
         ]);
 
-        return redirect('cobaberita')->with('success', 'Berita Berhasil Dibuat!');
+        return redirect('berita')->with('success', 'Berita Berhasil Dibuat!');
     }
 
     /**
@@ -71,7 +75,9 @@ class newsController extends Controller
     {
         $ber = Berita::findorfail($id);
         // dd($ber);
-        return view('News.editberita',compact('ber'));
+        return view('News.editberita', [
+            "title" => "Edit Berita"
+        ], compact('ber'));
     }
 
     /**
@@ -86,7 +92,7 @@ class newsController extends Controller
         $ber = Berita::findorfail($id);
         $ber->update($request->all());
         // dd($ber);
-        return redirect('cobaberita')->with('success', 'Berita Berhasil Diubah!');
+        return redirect('berita')->with('success', 'Berita Berhasil Diubah!');
     }
 
     /**

@@ -1,9 +1,6 @@
 @extends('layout.main')
 
-@section('title', 'Halaman Pengaduan')
-
 @section('container')
-        <main>
             <div class="input-berita-baru">
                 <div class="container mt-5">
                     <div class="row ">
@@ -41,5 +38,4 @@
                     </div>
                 </section>
             </div>
-        </main>
 @endsection

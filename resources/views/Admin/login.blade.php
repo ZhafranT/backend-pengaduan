@@ -9,18 +9,34 @@
     <title>Login Admin - Layanan Kementrian Perdagangan</title>
   </head>
   <body>
-    
+      @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ session('success') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
+      @if(session()->has('loginError'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ session('loginError') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      @endif
       <div class="container">
         <div class="row justify-content-center align-items-center">
           <div class="col-sm-4">
-            <form action="/postlogin" method="post" class="bg-form">
-              {{csrf_field()}}
+            <form action="/" method="post" class="bg-form">
+              @csrf
               <img src="../asset/logo-kemendag.png" alt="" class="img-login" />
               <div class="mb-3 input-email">
-                <input type="email" class="form-control" name="email" placeholder="Email address" />
+                <input type="email" name="email" class="form-control" placeholder="Email address"/>
+                {{-- @error('email')
+                <div class="invalid-feedback">
+                  {{ $messages }}
+                </div>
+                @enderror --}}
               </div>
               <div class="mb-3 input-password">
-                <input type="password" class="form-control" name="password" placeholder="Password" />
+                <input type="password" class="form-control" name="password" placeholder="Password"/>
               </div>
               <button type="submit" class="btn btn-primary btn-login">Login</button>
             </form>

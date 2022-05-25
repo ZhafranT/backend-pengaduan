@@ -15,7 +15,9 @@ class uupkController extends Controller
     public function index()
     {
         $dtUupk = Uupk::paginate(10);
-        return view('Uupk.uupk',compact('dtUupk'));
+        return view('Uupk.uupk', [
+            "title" => "UU Pengaduan Konsumen"
+        ], compact('dtUupk'));
     }
 
     /**
@@ -25,7 +27,9 @@ class uupkController extends Controller
      */
     public function create()
     {
-        return view('Uupk.inputuupk');
+        return view('Uupk.inputuupk', [
+            "title" => " Input UUPK"
+        ]);
     }
 
     /**
@@ -45,7 +49,7 @@ class uupkController extends Controller
             'isi' => $request->isi,
         ]);
 
-        return redirect('uupk')->with('success', 'Berita Berhasil Dibuat!');
+        return redirect('uupk')->with('success', 'UU Berhasil Diupload!');
     }
 
     /**
@@ -69,7 +73,9 @@ class uupkController extends Controller
     {
         $uup = Uupk::findorfail($id);
         // dd($ber);
-        return view('Uupk.edituupk',compact('uup'));
+        return view('Uupk.edituupk', [
+            "title" => " Edit UUPK"
+        ], compact('uup'));
     }
 
     /**

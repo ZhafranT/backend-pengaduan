@@ -1,7 +1,5 @@
 @extends('layout.main')
 
-@section('title', 'Halaman Daftar Berita')
-
 @section('container')
     <div class="card-body">
         <h1>Daftar Berita</h1>
@@ -27,8 +25,8 @@
                 <td>{{ $item->berita->name }}</td>
                 <td>{{ $item->updated_at }}</td>
                 <td>
-                    <i class="bi bi-pencil-square" href="{{ url('editberita', $item->id) }}"></i>
-                    <i class="bi bi-trash-fill" href="{{ url('deleteberita', $item->id) }}" onclick="return confirm('Are you sure?')"></i>
+                    <a class="bi bi-pencil-square" href="{{ url('editberita', $item->id) }}"></a> |
+                    <a class="bi bi-trash-fill" href="{{ url('deleteberita', $item->id) }}" onclick="return confirm('Are you sure?')"></a>
                 </td>
             </tr>
             @endforeach
