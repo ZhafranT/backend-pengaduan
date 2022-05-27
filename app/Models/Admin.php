@@ -20,8 +20,9 @@ class Admin extends Authenticatable
         return $this->hasMany(Uupk::class);
     }
     protected $fillable = [
-        'email',
         'name',
+        'email',
         'password',
+        'remember_token',
     ];
 }
