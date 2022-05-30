@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('judulBerita');
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE beritas ADD photo MEDIUMBLOB");
-        DB::statement("ALTER TABLE beritas ADD isiBerita BLOB");
+        DB::statement("ALTER TABLE beritas ADD photo TEXT");
+        DB::statement("ALTER TABLE beritas ADD isiBerita TEXT");
     }
 
     /**
