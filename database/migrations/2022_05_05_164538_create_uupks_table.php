@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('pasal');
             $table->timestamps();
         });
-        DB::statement("ALTER TABLE uupks ADD isi TEXT");
+        DB::statement("ALTER TABLE uupks ADD isi BLOB");
     }
 
     /**

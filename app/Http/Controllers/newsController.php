@@ -47,8 +47,8 @@ class newsController extends Controller
         Berita::create([
             'admin_id' => auth()->id(),
             'judulBerita' => $request->judul,
-            'photo' => "",
-            'isiBerita' => "",
+            'photo' => $base64,
+            'isiBerita' => $request->isi,
         ]);
 
         return redirect('berita')->with('success', 'Berita Berhasil Dibuat!');
