@@ -42,13 +42,11 @@ class userController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email|max:30|unique:users',
-            'NIK' => 'required|string|size:16|unique:users',
-            'firstName' => 'required|string|min:2|max:25',
-            'lastName' => 'string|min:2|max:25',
+            'nik' => 'required|string|size:16|unique:users',
+            'namaLengkap' => 'required|string|min:2|max:30',
             'alamat' => 'required|string|min:10',
             'noTelp' => 'required|string|min:10|max:12|starts_with:0|unique:users',
             'gender' => 'required|in:pria,wanita',
-            'tglLahir' => 'required',
             'password' => 'required|string|min:6|confirmed',
         ]);
 
@@ -58,13 +56,11 @@ class userController extends Controller
 
         $user = User::create([
             'email' => $request->get('email'),
-            'NIK' => $request->get('NIK'),
-            'firstName' => $request->get('firstName'),
-            'lastName' => $request->get('lastName'),
+            'nik' => $request->get('nik'),
+            'namaLengkap' => $request->get('namaLengkap'),
             'alamat' => $request->get('alamat'),
             'noTelp' => $request->get('noTelp'),
             'gender' => $request->get('gender'),
-            'tglLahir' => $request->get('tglLahir'),
             'password' => Hash::make($request->get('password')),
         ]);
 
