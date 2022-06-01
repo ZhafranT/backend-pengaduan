@@ -22,7 +22,7 @@
                 </td>
                 <td>{{ $item->judulBerita }}</td>
                 <td>{{ $item->isiBerita }}</td>
-                <td>{{ $item->berita->name }}</td>
+                <td>{{ $item->admin->name }}</td>
                 <td>{{ $item->updated_at }}</td>
                 <td>
                     <a class="bi bi-pencil-square" href="{{ url('editberita', $item->id) }}"></a> |

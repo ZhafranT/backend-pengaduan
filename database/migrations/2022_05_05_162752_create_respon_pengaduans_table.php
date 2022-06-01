@@ -17,12 +17,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('admin_id');
             $table->foreign('admin_id')
-              ->references('id')->on('admins')->onDelete('cascade');
+              ->references('id')->on('admins');
             $table->foreignId('pengaduan_id');
             $table->foreign('pengaduan_id')
               ->references('id')->on('pengaduans')->onDelete('cascade');
-            $table->string('status');
-            $table->string('keterangan');
+            $table->string('statusPengaduan');
+            $table->date('tanggalMediasi');
+            $table->string('tempatMediasi');
+            $table->string('reportMediasi');
             $table->timestamps();
         });
     }

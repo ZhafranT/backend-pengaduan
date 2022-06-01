@@ -42,11 +42,11 @@ class uupkController extends Controller
     {
         Uupk::create([
             'admin_id' => auth()->id(),
-            'nomorUU' => $request->nomorUU,
-            'bab' => $request->bab,
-            'judulBab' => $request->judulBab,
-            'pasal' => $request->pasal,
-            'isi' => $request->isi,
+            'nomorUU' => $request->nouu,
+            'bab' => $request->babno,
+            'judulBab' => $request->judul,
+            'pasal' => $request->pasalno,
+            'isi' => $request->isipasal,
         ]);
 
         return redirect('uupk')->with('success', 'UU Berhasil Diupload!');

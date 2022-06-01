@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreign('user_id')
-              ->references('id')->on('users')->onDelete('cascade');
+              ->references('id')->on('users');
             $table->string('nama');
             $table->string('jenisKelamin');
             $table->date('tanggalLahir');
@@ -38,7 +38,7 @@ return new class extends Migration
             $table->string('merkDagang');
             $table->string('type');
             $table->string('jenisPengaduan');
-            $table->datetime('waktuKejadianDitemukan');
+            $table->dateTime('waktuKejadianDitemukan');
             $table->string('tempatLokasiKejadian');
             $table->string('saksi');
             $table->string('kerugianMaterial');

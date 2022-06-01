@@ -8,13 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Pengaduan extends Model
 {
     use HasFactory;
-    public function pengaduan(){
-        return $this->belongsTo(User::class);
-        return $this->belongsTo(ResponPengaduan::class);
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+        // return $this->belongsTo(ResponPengaduan::class);
     }
-    public function pengaduan2(){
-        return $this->hasOne(User::class);
-        return $this->hasOne(ResponPengaduan::class);
+    // public function pengaduan2(){
+    //     return $this->hasOne(User::class);
+    //     return $this->hasOne(ResponPengaduan::class);
+    // }
+    public function responPengaduan(){
+        return $this->hasOne(ResponPengaduan::class, 'pengaduan_id');
     }
     protected $fillable = [
         'user_id',

@@ -14,7 +14,7 @@ class newsController extends Controller
      */
     public function index()
     {
-        $dtBerita = Berita::with('berita')->get();
+        $dtBerita = Berita::with('admin')->get();
         return view('News.berita', [
             "title" => "Berita"
         ], compact('dtBerita'));

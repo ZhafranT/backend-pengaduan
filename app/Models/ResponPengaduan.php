@@ -8,16 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class ResponPengaduan extends Model
 {
     use HasFactory;
-    public function reponpengaduan(){
-        return $this->belongsTo(Pengaduan::class);
+    // public function reponpengaduan(){
+    //     return $this->belongsTo(Pengaduan::class);
+    //     return $this->belongsTo(Admin::class);
+    // }
+    // public function responpengaduan2(){
+    //     return $this->hasOne(Pengaduan::class);
+    //     return $this->hasOne(Admin::class);
+    // }
+    public function pengaduan(){
+        return $this->belongsTo(Pengaduan::class, 'pengaduan_id');
     }
-    public function responpengaduan2(){
-        return $this->hasOne(Pengaduan::class);
+    public function admin(){
+        return $this->belongsTo(Admin::class, 'admin_id');
     }
     protected $fillable = [
         'admin_id',
         'pengaduan_id',
-        'status',
-        'keterangan',
+        'statusPengaduan',
+        'tanggalMediasi',
+        'tempatMediasi',
+        'reportMediasi',
     ];
 }

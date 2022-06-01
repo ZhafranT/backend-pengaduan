@@ -18,11 +18,11 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array<int, string>
      */
-    public function user(){
-        return $this->belongsTo(Pengaduan::class);
-    }
-    public function user2(){
-        return $this->hasMany(Pengaduan::class);
+    // public function user(){
+    //     return $this->belongsTo(Pengaduan::class);
+    // }
+    public function pengaduan(){
+        return $this->hasMany(Pengaduan::class, 'user_id');
     }
     protected $fillable = [
         'email',

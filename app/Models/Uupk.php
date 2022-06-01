@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Uupk extends Model
 {
     use HasFactory;
-    public function uupk(){
-        return $this->belongsTo(Admin::class);
+    public function admin(){
+        return $this->belongsTo(Admin::class, 'admin_id');
     }
-    public function uupk2(){
-        return $this->hasOne(Admin::class);
-    }
+    // public function uupk2(){
+    //     return $this->hasOne(Admin::class);
+    // }
     protected $fillable = [
         'admin_id',
         'nomorUU',

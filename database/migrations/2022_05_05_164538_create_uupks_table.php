@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('admin_id');
             $table->foreign('admin_id')
-              ->references('id')->on('admins')->onDelete('cascade');
+              ->references('id')->on('admins');
             $table->string('nomorUU');
             $table->string('bab');
             $table->string('judulBab');
