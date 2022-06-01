@@ -47,7 +47,7 @@ class userController extends Controller
             'alamat' => 'required|string|min:10',
             'noTelp' => 'required|string|min:10|max:12|starts_with:0|unique:users',
             'gender' => 'required|in:pria,wanita',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|between:8,255|confirmed',
         ]);
 
         if($validator->fails()){
