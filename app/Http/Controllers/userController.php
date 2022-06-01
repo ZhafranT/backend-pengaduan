@@ -66,12 +66,12 @@ class userController extends Controller
                 'password' => Hash::make($request->get('password')),
             ]);
 
-            $token = JWTAuth::fromUser($user);
+            // $token = JWTAuth::fromUser($user);
 
-            $updateToken = User::where('email', $request->email)
-            ->update([
-                'token' => $token
-            ]);
+            // $updateToken = User::where('email', $request->email)
+            // ->update([
+            //     'token' => $token
+            // ]);
             return response()->json(compact('user'),201);
         } catch (\Throwable $th) {
             //throw $th;
