@@ -40,38 +40,77 @@ class userController extends Controller
 
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|string|email|max:30|unique:users',
-            'nik' => 'required|string|size:16|unique:users',
-            'namaLengkap' => 'required|string|min:2|max:30',
-            'alamat' => 'required|string|min:10',
-            'noTelp' => 'required|string|min:10|max:12|starts_with:0|unique:users',
-            'gender' => 'required|in:pria,wanita',
-            'password' => 'required|between:8,255|confirmed',
-        ]);
+        try {
+            //code...
+            $validator = Validator::make($request->all(), [
+                'email' => 'required|string|email|max:30|unique:users',
+                'nik' => 'required|string|size:16|unique:users',
+                'namaLengkap' => 'required|string|min:2|max:30',
+                'alamat' => 'required|string|min:10',
+                'noTelp' => 'required|string|min:10|max:12|starts_with:0|unique:users',
+                'gender' => 'required|in:pria,wanita',
+                'password' => 'required|string|min:6',
+            ]);
 
-        if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            if($validator->fails()){
+                return response()->json($validator->errors()->toJson(), 400);
+            }
+
+            $user = User::create([
+                'email' => $request->get('email'),
+                'nik' => $request->get('nik'),
+                'namaLengkap' => $request->get('namaLengkap'),
+                'alamat' => $request->get('alamat'),
+                'noTelp' => $request->get('noTelp'),
+                'gender' => $request->get('gender'),
+                'password' => Hash::make($request->get('password')),
+            ]);
+
+            $token = JWTAuth::fromUser($user);
+
+            $updateToken = User::where('email', $request->email)
+            ->update([
+                'token' => $token
+            ]);
+            return response()->json(compact('user'),201);
+        } catch (\Throwable $th) {
+            //throw $th;
+            echo $th;
+            return response()->json("bad request",400);
         }
 
-        $user = User::create([
-            'email' => $request->get('email'),
-            'nik' => $request->get('nik'),
-            'namaLengkap' => $request->get('namaLengkap'),
-            'alamat' => $request->get('alamat'),
-            'noTelp' => $request->get('noTelp'),
-            'gender' => $request->get('gender'),
-            'password' => Hash::make($request->get('password')),
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'email' => 'required|string|email|max:30|unique:users',
+        //     'nik' => 'required|string|size:16|unique:users',
+        //     'namaLengkap' => 'required|string|min:2|max:30',
+        //     'alamat' => 'required|string|min:10',
+        //     'noTelp' => 'required|string|min:10|max:12|starts_with:0|unique:users',
+        //     'gender' => 'required|in:pria,wanita',
+        //     'password' => 'required|min:6|confirmed'
+        // ]);
 
-        $token = JWTAuth::fromUser($user);
+        // if($validator->fails()){
+        //     return response()->json($validator->errors()->toJson(), 400);
+        // }
 
-        $updateToken = User::where('email', $request->email)
-        ->update([
-            'token' => $token
-         ]);
+        // $user = User::create([
+        //     'email' => $request->get('email'),
+        //     'nik' => $request->get('nik'),
+        //     'namaLengkap' => $request->get('namaLengkap'),
+        //     'alamat' => $request->get('alamat'),
+        //     'noTelp' => $request->get('noTelp'),
+        //     'gender' => $request->get('gender'),
+        //     'password' => Hash::make($request->get('password')),
+        // ]);
 
-        return response()->json(compact('user'),201);
+        // $token = JWTAuth::fromUser($user);
+
+        // $updateToken = User::where('email', $request->email)
+        // ->update([
+        //     'token' => $token
+        //  ]);
+
+        // return response()->json(compact('user'),201);
     }
 
     public function getAuthenticatedUser()
