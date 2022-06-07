@@ -77,7 +77,7 @@ class uupkController extends Controller
             "title" => " Edit UUPK"
         ], compact('uup'));
     }
-
+    
     /**
      * Update the specified resource in storage.
      *

@@ -4,6 +4,9 @@
     <div class="card-body">
         <h1>Daftar Berita</h1>
         <a href="/inputberita" class="btn btn-success mt-5">+Tambah Berita</a>
+        <div class="mt-5">
+            {{ $dtBerita->links('pagination::bootstrap-4') }} 
+        </div>
         <table class="table table-bordered mt-5">
             <tr>
                 <th>No</th>

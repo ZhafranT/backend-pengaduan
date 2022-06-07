@@ -19,10 +19,6 @@ use App\Http\Controllers\statisticController;
 */
 
 // Route::get('/', function () {return view('welcome');});
-// Route::get('/',[dataController::class, 'showadmin'])->name('layout.main');
-// Route::get('/main',[adminController::class, 'index'])->name('layout.main');
-
-// Route::get('/', function () {return view('Admin.login');})->name('login');
 
 Route::group(['middleware' => 'guest'], function (){
     Route::get('/',[adminController::class, 'index'])->name('login');
@@ -30,11 +26,17 @@ Route::group(['middleware' => 'guest'], function (){
 });
 
 Route::group(['middleware' => 'auth'], function (){
-    // Route::get('/pengaduan', function () {return view('Pengaduan.pengaduan');});
     Route::get('/pengaduanunresolved',[pengaduanController::class, 'indexUnresolved'])->name('Pengaduan.pengaduanunresolved');
     Route::get('/pengaduanprocess',[pengaduanController::class, 'indexOnprocess'])->name('Pengaduan.pengaduanprocess');
     Route::get('/pengaduanmediasi',[pengaduanController::class, 'indexMediasi'])->name('Pengaduan.pengaduanmediasi');
     Route::get('/pengaduandone',[pengaduanController::class, 'indexDone'])->name('Pengaduan.pengaduandone');
+    Route::get('/detailpengaduanunresolved/{id}',[pengaduanController::class, 'unresolvedDetail'])->name('Pengaduan.pengaduanunresolved');
+
+    Route::get('/exportpengaduan',[pengaduanController::class, 'pengaduanexport'])->name('exportpengaduan');
+
+    Route::post('/processPengaduan/{id}',[pengaduanController::class, 'updateProcess'])->name('updateprocess');
+    Route::post('/processMediasi/{id}',[pengaduanController::class, 'updateMediasi'])->name('updatemediasi');
+    Route::post('/processReport/{id}',[pengaduanController::class, 'updateReport'])->name('updatereport');
 
     Route::get('/berita',[newsController::class, 'index'])->name('News.berita');
     Route::get('/inputberita',[newsController::class, 'create'])->name('News.inputberita');
@@ -53,5 +55,4 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/statistic',[statisticController::class, 'index'])->name('Statistic.statistic');
     
     Route::get('/logout',[adminController::class, 'logout'])->name('logout');
-    // Route::get('/sidebar',[sidebarController::class, 'index'])->name('layout.main');
 });

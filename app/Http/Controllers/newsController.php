@@ -14,7 +14,7 @@ class newsController extends Controller
      */
     public function index()
     {
-        $dtBerita = Berita::with('admin')->get();
+        $dtBerita = Berita::with('admin')->paginate(5);
         return view('News.berita', [
             "title" => "Berita"
         ], compact('dtBerita'));
@@ -90,8 +90,11 @@ class newsController extends Controller
     public function update(Request $request, $id)
     {
         $ber = Berita::findorfail($id);
-        $ber->update($request->all());
-        // dd($ber);
+        // cek dulu param yg kosong dari request
+        // semisal gambar kosong jangan update all
+        // update sesuai param yg ada isinya aja
+        //  if poto null 
+        $ber->update($request->judulBerita(),$request->isiBerita());
         return redirect('berita')->with('success', 'Berita Berhasil Diubah!');
     }
 

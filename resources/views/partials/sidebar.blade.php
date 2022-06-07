@@ -17,7 +17,7 @@
             <h3>{{ auth()->user()->name }}</h3>
         </a>
         @endauth
-        <a href="/pengaduanunresolved" class="{{ ($title === "Pengaduan Unresolved") ? 'active' : '' }}">
+        <a href="/pengaduanunresolved" class="{{ ($title === "Pengaduan Unresolved") || ($title === "Pengaduan Process") || ($title === "Pengaduan Mediasi") || ($title === "Pengaduan Done") || ($title === "Detail Pengaduan") ? 'active' : '' }}">
             <span class="material-icons-sharp">receipt_long</span>
             <h3>Pengaduan</h3>
         </a>
@@ -28,7 +28,7 @@
         </a>
 
         <a href="/uupk" class="{{ ($title === "UU Pengaduan Konsumen") ? 'active' : '' }}">
-            <span class="material-icons-sharp">newspaper</span>
+            <span class="material-icons-sharp">list_alt</span>
             <h3>UU PK</h3>
         </a>
 
