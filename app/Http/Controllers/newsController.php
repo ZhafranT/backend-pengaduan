@@ -93,8 +93,10 @@ class newsController extends Controller
         // cek dulu param yg kosong dari request
         // semisal gambar kosong jangan update all
         // update sesuai param yg ada isinya aja
+        // dd($request->all());
         //  if poto null 
-        $ber->update($request->judulBerita(),$request->isiBerita());
+        $ber->update($request->all());
+        // dd($ber);
         return redirect('berita')->with('success', 'Berita Berhasil Diubah!');
     }
 
