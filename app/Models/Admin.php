@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Admin extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasFactory;
     // public function admin(){
     //     return $this->belongsTo(ResponPengaduan::class);
     //     return $this->belongsTo(Berita::class);
@@ -32,6 +33,5 @@ class Admin extends Authenticatable
         'name',
         'email',
         'password',
-        'remember_token',
     ];
 }

@@ -24,7 +24,7 @@ class userController extends Controller
 
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'invalid_credentials'], 400);
+                return response()->json(['error' => 'Email/Password yang anda masukan salah'], 400);
             }
             $updateToken = User::where('email', $request->email)
             ->update([

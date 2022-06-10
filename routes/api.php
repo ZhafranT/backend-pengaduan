@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\pengaduanController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,8 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/test1',[userController::class,'body'])->middleware('jwt.verify');
+// Route::post('/test1',[userController::class,'body'])->middleware('jwt.verify');
 Route::post('/login',[userController::class,'login']);
 Route::post('/register',[userController::class,'register']);
-Route::post('/loginadmin',[adminController::class,'login']);
-Route::post('/registeradmin',[adminController::class,'register']);
+// Route::post('/loginadmin',[adminController::class,'login']);
+// Route::post('/registeradmin',[adminController::class,'register']);
+
+Route::post('/insertpengaduan',[pengaduanController::class,'pengaduanTransaction']);

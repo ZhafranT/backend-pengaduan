@@ -15,16 +15,16 @@ return new class extends Migration
     {
         Schema::create('respon_pengaduans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('admin_id');
+            $table->foreignId('admin_id')->nullable();
             $table->foreign('admin_id')
               ->references('id')->on('admins');
             $table->foreignId('pengaduan_id');
             $table->foreign('pengaduan_id')
               ->references('id')->on('pengaduans')->onDelete('cascade');
             $table->string('statusPengaduan');
-            $table->date('tanggalMediasi');
-            $table->string('tempatMediasi');
-            $table->string('reportMediasi');
+            $table->date('tanggalMediasi')->nullable();
+            $table->string('tempatMediasi')->nullable();
+            $table->string('reportMediasi')->nullable();
             $table->timestamps();
         });
     }

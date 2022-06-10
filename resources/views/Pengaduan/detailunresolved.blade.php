@@ -4,6 +4,8 @@
 
 <h2 class="mt-5">Detail Pengaduan</h2>
 
+<a href="{{ url('exportpengaduanpdf', $dun->id) }}" style="float:right" class="btn btn-danger mb-3"><i class="bi bi-file-earmark-spreadsheet-fill"></i> Download Data (.PDF)</a>
+
 <table class="table table-bordered mt-5">
     <thead class="table-success">
         <tr>
@@ -41,7 +43,7 @@
         <tr>
             <td>{{ $dun->pengaduan->nama }}</td>
             <td>{{ $dun->pengaduan->jenisKelamin }}</td>
-            <td>{{ $dun->pengaduan->tanggalLahir }}</td>
+            <td>{{ date('d-m-Y', strtotime($dun->pengaduan->tanggalLahir)) }}</td>
             <td>{{ $dun->pengaduan->noIdentitas }}</td>
             <td>{{ $dun->pengaduan->telepon }}</td>
             <td>{{ $dun->pengaduan->email }}</td>
@@ -85,8 +87,6 @@
             <th>Merk Dagang</th>
             <th>Type</th>
             <th>Jenis Pengaduan</th>
-            <th>Saat Kejadian Ditemukan (Tanggal / Jam)</th>
-            <th>Saat Kejadian Ditemukan (Lokasi)</th>
         </tr>
     </thead>
     <tbody class="atable">
@@ -97,9 +97,24 @@
             <td>{{ $dun->pengaduan->merkDagang}}</td>
             <td>{{ $dun->pengaduan->type}}</td>
             <td>{{ $dun->pengaduan->jenisPengaduan}}</td>
+            
+        </tr>
+        
+    </tbody>
+</table>
+
+<table class="table table-bordered mt-5">
+    <thead class="table-success align-middle">
+        <tr>
+            <th>Saat Kejadian Ditemukan (Tanggal / Jam)</th>
+            <th>Saat Kejadian Ditemukan (Lokasi)</th>
+        </tr>
+    </thead>
+    <tbody class="atable">
+        
+        <tr>
             <td>{{ $dun->pengaduan->waktuKejadianDitemukan}}</td>
             <td>{{ $dun->pengaduan->tempatLokasiKejadian}}</td>
-            
         </tr>
         
     </tbody>
@@ -116,7 +131,7 @@
         
         <tr>
 
-            <td>{{ $dun->pengaduan->buktiPembelian}}</td>
+            <td><img src="{{ $dun->pengaduan->buktiPembelian }}" alt=""></td>
             <td>{{ $dun->pengaduan->saksi}}</td>
             
         </tr>

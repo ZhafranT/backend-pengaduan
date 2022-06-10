@@ -9,6 +9,7 @@ use App\Exports\PengaduanExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use DB;
+use PDF;
 
 class pengaduanController extends Controller
 {
@@ -67,46 +68,44 @@ class pengaduanController extends Controller
     public function updateProcess($id)
     {
         try {
-            $fuu = ResponPengaduan::findorfail($id);
-            $fuu->update([
-                'statusPengaduan' => 'process',
-            ]);
+            // $fuu = ResponPengaduan::findorfail($id);
+            // $fuu->update([
+            //     'statusPengaduan' => 'process',
+            //     'admin_id' => auth()->id(),
+            // ]);
 
-            // $id1 = (string)$id;
-            // DB::table('respon_pengaduans')
-            // ->where('pengaduan_id', $id1)
-            // ->update(['statusPengaduan' => 'process']);
+            $id1 = (string)$id;
+            DB::table('respon_pengaduans')
+            ->where('pengaduan_id', $id1)
+            ->update([
+                'statusPengaduan' => 'process',
+                'admin_id' => auth()->id(),
+            ]);
         } catch (\Throwable $th) {
             dd($th);
         }
         return back()->with('success', 'Data Berhasil Diproses!');
     }
 
-    // public function createMediasi(Request $request)
-    // {
-    //     ResponPengaduan::create([
-    //         'tanggalMediasi' => $request->mediasitanggal,
-    //         'tempatMediasi' => $request->mediasitempat,
-    //     ]);
-    // }
-
     public function updateMediasi(Request $request, $id)
     {
         try {
-            $foo = ResponPengaduan::findorfail($id);
-            $foo->update([
-                'statusPengaduan' => 'mediasi',
-                'tanggalMediasi'=> $request->mediasitanggal,
-                'tempatMediasi' => $request->mediasitempat,
-            ]);
-            // $id2 = (string)$id;
-            // DB::table('respon_pengaduans')
-            // ->where('pengaduan_id', $id2)
-            // ->update([
+            // $foo = ResponPengaduan::findorfail($id);
+            // $foo->update([
             //     'statusPengaduan' => 'mediasi',
             //     'tanggalMediasi'=> $request->mediasitanggal,
             //     'tempatMediasi' => $request->mediasitempat,
+            //     'admin_id' => auth()->id(),
             // ]);
+            $id2 = (string)$id;
+            DB::table('respon_pengaduans')
+            ->where('pengaduan_id', $id2)
+            ->update([
+                'statusPengaduan' => 'mediasi',
+                'tanggalMediasi'=> $request->mediasitanggal,
+                'tempatMediasi' => $request->mediasitempat,
+                'admin_id' => auth()->id(),
+            ]);
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -116,18 +115,20 @@ class pengaduanController extends Controller
     public function updateReport(Request $request, $id)
     {
         try {
-            $fww = ResponPengaduan::findorfail($id);
-            $fww->update([
-                'statusPengaduan' => 'done',
-                'reportMediasi'=> $request->mediasireport,
-            ]);
-            // $id3 = (string)$id;
-            // DB::table('respon_pengaduans')
-            // ->where('pengaduan_id', $id3)
-            // ->update([
+            // $fww = ResponPengaduan::findorfail($id);
+            // $fww->update([
             //     'statusPengaduan' => 'done',
             //     'reportMediasi'=> $request->mediasireport,
+            //     'admin_id' => auth()->id(),
             // ]);
+            $id3 = (string)$id;
+            DB::table('respon_pengaduans')
+            ->where('pengaduan_id', $id3)
+            ->update([
+                'statusPengaduan' => 'done',
+                'reportMediasi'=> $request->mediasireport,
+                'admin_id' => auth()->id(),
+            ]);
         } catch (\Throwable $th) {
             dd($th);
         }
@@ -146,5 +147,36 @@ class pengaduanController extends Controller
     public function pengaduanexport()
     {
         return Excel::download(new PengaduanExport,'pengaduan.xlsx');
+    }
+
+    public function unresolvedexport($id)
+    {
+        $dun = ResponPengaduan::with('pengaduan');
+        $dun = ResponPengaduan::findorfail($id);
+    	$pdf = PDF::loadview('Pengaduan.detailunresolvedpdf', compact('dun'));
+    	return $pdf->download('laporan-pengaduan-pdf');
+    }
+
+    public function pengaduanTransaction(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            $transaction = Pengaduan::create($request->all());
+            ResponPengaduan::create([
+                'pengaduan_id' => $transaction->id,
+                'statusPengaduan' => "unresolved",
+            ]);
+            DB::commit();
+            return response([
+                'message' => "User created successfully",
+                'status' => "success"
+            ], 200);
+        } catch (\Exception $exp) {
+            DB::rollBack(); // Tell Laravel, "It's not you, it's me. Please don't persist to DB"
+            return response([
+                'message' => $exp->getMessage(),
+                'status' => 'failed'
+            ], 400);
+        }
     }
 }

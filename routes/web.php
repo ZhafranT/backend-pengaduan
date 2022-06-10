@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/detailpengaduanunresolved/{id}',[pengaduanController::class, 'unresolvedDetail'])->name('Pengaduan.pengaduanunresolved');
 
     Route::get('/exportpengaduan',[pengaduanController::class, 'pengaduanexport'])->name('exportpengaduan');
+    Route::get('/exportpengaduanpdf/{id}',[pengaduanController::class, 'unresolvedexport'])->name('exportpengaduanpdf');
 
     Route::post('/processPengaduan/{id}',[pengaduanController::class, 'updateProcess'])->name('updateprocess');
     Route::post('/processMediasi/{id}',[pengaduanController::class, 'updateMediasi'])->name('updatemediasi');
