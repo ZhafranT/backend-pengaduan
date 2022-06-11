@@ -7,8 +7,8 @@
 <div class="pengaduan-pelanggan">
 
     <h2 class="mt-5">Mediasi Pengaduan</h2>
-
-    <table class="mt-4">
+    <br><br><br>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
                 <th>Nama</th>
@@ -24,7 +24,7 @@
             </tr>
         </thead>
 
-        <tbody class="atable">
+        <tbody>
             @foreach ($dtMediasi as $item)
             <tr>
                 <td>{{ $item->pengaduan->nama }}</td>
@@ -33,11 +33,11 @@
                 <td>{{ $item->pengaduan->merkDagang }}</td>
                 <td>{{ $item->pengaduan->type }}</td>
                 <td>{{ $item->pengaduan->jenisPengaduan }}</td>
-                <td>{{ date('d-m-Y', strtotime($item->tanggalMediasi)) }}</td>
+                <td>{{ $item->tanggalMediasi }}</td>
                 <td>{{ $item->tempatMediasi }}</td>
                 <td>{{ $item->statusPengaduan }}</td>
                 <td>
-                    <button class="btn btn-primary" onclick="togglepopup('{{ $item->pengaduan->id }}')">Report</button>
+                    <button class="btn btn-success" onclick="togglepopup('{{ $item->pengaduan->id }}')">Report</button>
                     <div class="popup" id="popup-1">
                         <div class="overlay"></div>
                         <div class="contents">
@@ -65,19 +65,24 @@
                                         </div>
                                     </div>
                                 </div>
-            
                             </section>
                         </div>
                     </div>
-
-                    
                 </td>
             </tr>
             @endforeach
-            <tr>
-                {{ $dtMediasi->links('pagination::bootstrap-4') }}
-            </tr>
         </tbody>
     </table>
+    <br><br><br>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 </div>
 @endsection

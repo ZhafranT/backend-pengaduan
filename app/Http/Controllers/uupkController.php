@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\ApiFormatter;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Uupk;
 
@@ -14,7 +16,7 @@ class uupkController extends Controller
      */
     public function index()
     {
-        $dtUupk = Uupk::paginate(10);
+        $dtUupk = Uupk::all();
         return view('Uupk.uupk', [
             "title" => "UU Pengaduan Konsumen"
         ], compact('dtUupk'));
@@ -104,5 +106,16 @@ class uupkController extends Controller
         $uup = Uupk::findorfail($id);
         $uup->delete();
         return back()->with('info', 'UU Berhasil Dihapus!');;
+    }
+
+    public function uupkApi()
+    {
+        $data = Uupk::all();
+
+        if ($data) {
+            return ApiFormatter::createApi(200, 'Success', $data);
+        } else {
+            return ApiFormatter::createApi(400, 'Failed');
+        }
     }
 }

@@ -7,8 +7,8 @@
 <div class="pengaduan-pelanggan">
 
     <h2 class="mt-5">Pengaduan Selesai</h2>
-
-    <table class="mt-4">
+    <br><br><br>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
                 <th>Nama</th>
@@ -19,11 +19,9 @@
                 <th>Jenis Pengaduan</th>
                 <th>Tanggal</th>
                 <th>Status</th>
-                <th>Download Report</th>
             </tr>
         </thead>
-
-        <tbody class="atable">
+        <tbody>
             @foreach ($dtDone as $item)
             <tr>
                 <td>{{ $item->pengaduan->nama }}</td>
@@ -32,15 +30,22 @@
                 <td>{{ $item->pengaduan->merkDagang }}</td>
                 <td>{{ $item->pengaduan->type }}</td>
                 <td>{{ $item->pengaduan->jenisPengaduan }}</td>
-                <td>{{ date('d-m-Y', strtotime($item->updated_at)) }}</td>
+                <td>{{ $item->updated_at }}</td>
                 <td>{{ $item->statusPengaduan }}</td>
-                <td><a href="#"><span class="material-icons-sharp">file_download</span></a></td>
             </tr>
             @endforeach
-            <tr>
-                {{ $dtDone->links('pagination::bootstrap-4') }}
-            </tr>
         </tbody>
     </table>
+    <br><br><br>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 </div>
 @endsection

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helper\ApiFormatter;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Berita;
 
@@ -14,7 +16,7 @@ class newsController extends Controller
      */
     public function index()
     {
-        $dtBerita = Berita::with('admin')->paginate(5);
+        $dtBerita = Berita::with('admin')->get();
         return view('News.berita', [
             "title" => "Berita"
         ], compact('dtBerita'));
@@ -111,5 +113,16 @@ class newsController extends Controller
         $ber = Berita::findorfail($id);
         $ber->delete();
         return back()->with('info', 'Berita Berhasil Dihapus!');;
+    }
+
+    public function newsApi()
+    {
+        $data = Berita::all();
+
+        if ($data) {
+            return ApiFormatter::createApi(200, 'Success', $data);
+        } else {
+            return ApiFormatter::createApi(400, 'Failed');
+        }
     }
 }

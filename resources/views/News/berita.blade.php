@@ -1,13 +1,13 @@
 @extends('layout.main')
 
 @section('container')
-    <div class="card-body">
-        <h1>Daftar Berita</h1>
-        <a href="/inputberita" class="btn btn-success mt-5">+Tambah Berita</a>
-        <div class="mt-5">
-            {{ $dtBerita->links('pagination::bootstrap-4') }} 
-        </div>
-        <table class="table table-bordered mt-5">
+
+<div class="card-body">
+    <h2>Daftar Berita</h2>
+    <a href="/inputberita" class="btn btn-success mt-5">+Tambah Berita</a>
+    <br><br><br>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
             <tr>
                 <th>No</th>
                 <th>Gambar</th>
@@ -17,6 +17,8 @@
                 <th>Tanggal Berita</th>
                 <th>Action</th>
             </tr>
+        </thead>
+        <tbody>
             @foreach ($dtBerita as $item)
             <tr>
                 <td>{{ $loop->iteration }}</td>
@@ -33,8 +35,20 @@
                 </td>
             </tr>
             @endforeach
-        </table>
-    </div>
-    @include('sweetalert::alert')
-    
+        </tbody>
+    </table>
+    <br><br><br>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+    </script>
+</div>
+@include('sweetalert::alert')
 @endsection

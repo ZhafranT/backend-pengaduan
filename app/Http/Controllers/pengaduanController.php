@@ -16,7 +16,7 @@ class pengaduanController extends Controller
     public function indexUnresolved()
     {
         $dtUnresolved = ResponPengaduan::with('pengaduan');
-        $dtUnresolved = ResponPengaduan::where('statusPengaduan', '=', 'unresolved')->paginate(15);
+        $dtUnresolved = ResponPengaduan::where('statusPengaduan', '=', 'unresolved')->get();
         $dtcount_unresolve = ResponPengaduan::where('statusPengaduan','unresolved')->count();
         $dtcount_process = ResponPengaduan::where('statusPengaduan','process')->count();
         $dtcount_mediasi = ResponPengaduan::where('statusPengaduan','mediasi')->count();
@@ -29,7 +29,7 @@ class pengaduanController extends Controller
     public function indexOnprocess()
     {
         $dtProcess = ResponPengaduan::with('pengaduan');
-        $dtProcess = ResponPengaduan::where('statusPengaduan', '=', 'process')->paginate(15);
+        $dtProcess = ResponPengaduan::where('statusPengaduan', '=', 'process')->get();
         $dtcount_unresolve = ResponPengaduan::where('statusPengaduan','unresolved')->count();
         $dtcount_process = ResponPengaduan::where('statusPengaduan','process')->count();
         $dtcount_mediasi = ResponPengaduan::where('statusPengaduan','mediasi')->count();
@@ -42,7 +42,7 @@ class pengaduanController extends Controller
     public function indexMediasi()
     {
         $dtMediasi = ResponPengaduan::with('pengaduan');
-        $dtMediasi = ResponPengaduan::where('statusPengaduan', '=', 'mediasi')->paginate(15);
+        $dtMediasi = ResponPengaduan::where('statusPengaduan', '=', 'mediasi')->get();
         $dtcount_unresolve = ResponPengaduan::where('statusPengaduan','unresolved')->count();
         $dtcount_process = ResponPengaduan::where('statusPengaduan','process')->count();
         $dtcount_mediasi = ResponPengaduan::where('statusPengaduan','mediasi')->count();
@@ -55,7 +55,7 @@ class pengaduanController extends Controller
     public function indexDone()
     {
         $dtDone = ResponPengaduan::with('pengaduan');
-        $dtDone = ResponPengaduan::where('statusPengaduan', '=', 'done')->paginate(15);
+        $dtDone = ResponPengaduan::where('statusPengaduan', '=', 'done')->get();
         $dtcount_unresolve = ResponPengaduan::where('statusPengaduan','unresolved')->count();
         $dtcount_process = ResponPengaduan::where('statusPengaduan','process')->count();
         $dtcount_mediasi = ResponPengaduan::where('statusPengaduan','mediasi')->count();
@@ -68,19 +68,19 @@ class pengaduanController extends Controller
     public function updateProcess($id)
     {
         try {
-            // $fuu = ResponPengaduan::findorfail($id);
-            // $fuu->update([
-            //     'statusPengaduan' => 'process',
-            //     'admin_id' => auth()->id(),
-            // ]);
-
-            $id1 = (string)$id;
-            DB::table('respon_pengaduans')
-            ->where('pengaduan_id', $id1)
-            ->update([
+            $fuu = ResponPengaduan::findorfail($id);
+            $fuu->update([
                 'statusPengaduan' => 'process',
                 'admin_id' => auth()->id(),
             ]);
+
+            // $id1 = (string)$id;
+            // DB::table('respon_pengaduans')
+            // ->where('pengaduan_id', $id1)
+            // ->update([
+            //     'statusPengaduan' => 'process',
+            //     'admin_id' => auth()->id(),
+            // ]);
         } catch (\Throwable $th) {
             dd($th);
         }

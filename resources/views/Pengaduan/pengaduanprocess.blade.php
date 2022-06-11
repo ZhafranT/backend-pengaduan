@@ -7,8 +7,8 @@
 <div class="pengaduan-pelanggan">
 
     <h2 class="mt-5">Pengaduan Diproses</h2>
-
-    <table class="mt-4">
+    <br><br><br>
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
             <tr>
                 <th>Nama</th>
@@ -22,8 +22,7 @@
                 <th></th>
             </tr>
         </thead>
-
-        <tbody class="atable">
+        <tbody>
             @foreach ($dtProcess as $item)
             <tr>
                 <td>{{ $item->pengaduan->nama }}</td>
@@ -32,7 +31,7 @@
                 <td>{{ $item->pengaduan->merkDagang }}</td>
                 <td>{{ $item->pengaduan->type }}</td>
                 <td>{{ $item->pengaduan->jenisPengaduan }}</td>
-                <td>{{ date('d-m-Y', strtotime($item->updated_at)) }}</td>
+                <td>{{ $item->updated_at }}</td>
                 <td>{{ $item->statusPengaduan }}</td>
                 <td>
                     <button class="btn btn-primary" onclick="togglepopup('{{ $item->pengaduan->id }}')">Mediasi</button>
@@ -72,18 +71,24 @@
                                         </div>
                                     </div>
                                 </div>
-            
                             </section>
                         </div>
                     </div>
-
                 </td>
             </tr>
             @endforeach
-            <tr>
-                {{ $dtProcess->links('pagination::bootstrap-4') }}
-            </tr>
         </tbody>
     </table>
+    <br><br><br>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
 </div>
 @endsection
