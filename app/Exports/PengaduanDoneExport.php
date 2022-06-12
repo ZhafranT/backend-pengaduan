@@ -7,15 +7,15 @@ use App\Models\ResponPengaduan;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
-class PengaduanExport implements FromView
+class PengaduanDoneExport implements FromView
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function view(): View
     {
-        return view('Pengaduan.Export.unresolvedexcel', [
-            'dtUnr' => ResponPengaduan::with('pengaduan')->where('statusPengaduan', '=', 'unresolved')->get()
+        return view('Pengaduan.Export.doneexcel', [
+            'dtDone' => ResponPengaduan::with('pengaduan')->where('statusPengaduan', '=', 'done')->get()
         ]);
     }
 }

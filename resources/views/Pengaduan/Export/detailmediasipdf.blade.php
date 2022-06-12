@@ -22,13 +22,19 @@
                 <tr>
                     <th>ID Pengaduan</th>
                     <th>ID User</th>
+                    <th>Status Pengaduan</th>
+                    <th>Tanggal Mediasi</th>
+                    <th>Tempat Mediasi</th>
                 </tr>
             </thead>
             <tbody class="atable">
                 
                 <tr>
-                    <td>{{ $dun->pengaduan->id }}</td>
-                    <td>{{ $dun->pengaduan->user_id }}</td>
+                    <td>{{ $dme->pengaduan->id }}</td>
+                    <td>{{ $dme->pengaduan->user_id }}</td>
+                    <td>{{ $dme->statusPengaduan }}</td>
+                    <td>{{ $dme->tanggalMediasi }}</td>
+                    <td>{{ $dme->tempatMediasi }}</td>
                 </tr>
                 
             </tbody>
@@ -48,10 +54,10 @@
             <tbody class="atable">
                 
                 <tr>
-                    <td>{{ $dun->pengaduan->nama }}</td>
-                    <td>{{ $dun->pengaduan->jenisKelamin }}</td>
-                    <td>{{ date('d-m-Y', strtotime($dun->pengaduan->tanggalLahir)) }}</td>
-                    <td>{{ $dun->pengaduan->noIdentitas }}</td>
+                    <td>{{ $dme->pengaduan->nama }}</td>
+                    <td>{{ $dme->pengaduan->jenisKelamin }}</td>
+                    <td>{{ date('d-m-Y', strtotime($dme->pengaduan->tanggalLahir)) }}</td>
+                    <td>{{ $dme->pengaduan->noIdentitas }}</td>
                 </tr>
                 
             </tbody>
@@ -67,8 +73,8 @@
             <tbody class="atable">
                 
                 <tr>
-                    <td>{{ $dun->pengaduan->telepon }}</td>
-                    <td>{{ $dun->pengaduan->email }}</td>
+                    <td>{{ $dme->pengaduan->telepon }}</td>
+                    <td>{{ $dme->pengaduan->email }}</td>
                 </tr>
                 
             </tbody>
@@ -86,10 +92,10 @@
             <tbody class="atable">
                 
                 <tr>
-                    <td>{{ $dun->pengaduan->alamat }}</td>
-                    <td>{{ $dun->pengaduan->provinsi }}</td>
-                    <td>{{ $dun->pengaduan->kotaKabupaten }}</td>
-                    <td>{{ $dun->pengaduan->kodePos }}</td>
+                    <td>{{ $dme->pengaduan->alamat }}</td>
+                    <td>{{ $dme->pengaduan->provinsi }}</td>
+                    <td>{{ $dme->pengaduan->kotaKabupaten }}</td>
+                    <td>{{ $dme->pengaduan->kodePos }}</td>
                 </tr>
                 
             </tbody>
@@ -107,8 +113,8 @@
             <tbody class="atable">
                 
                 <tr>
-                    <td>{{ $dun->pengaduan->alamatTempatBarangJasa }}</td>
-                    <td>{{ $dun->pengaduan->teleponPelakuUsaha }}</td>
+                    <td>{{ $dme->pengaduan->alamatTempatBarangJasa }}</td>
+                    <td>{{ $dme->pengaduan->teleponPelakuUsaha }}</td>
                 </tr>
                 
             </tbody>
@@ -125,9 +131,9 @@
             <tbody class="atable">
                 
                 <tr>
-                    <td>{{ $dun->pengaduan->provinsiPelakuUsaha }}</td>
-                    <td>{{ $dun->pengaduan->kotaKabupatenPelakuUsaha }}</td>
-                    <td>{{ $dun->pengaduan->kodePosPelakuUsaha }}</td>
+                    <td>{{ $dme->pengaduan->provinsiPelakuUsaha }}</td>
+                    <td>{{ $dme->pengaduan->kotaKabupatenPelakuUsaha }}</td>
+                    <td>{{ $dme->pengaduan->kodePosPelakuUsaha }}</td>
                 </tr>
                 
             </tbody>
@@ -149,11 +155,11 @@
             <tbody class="atable">
                 
                 <tr>
-                    <td>{{ $dun->pengaduan->jenisProduk}}</td>
-                    <td>{{ $dun->pengaduan->detailProduk}}</td>
-                    <td>{{ $dun->pengaduan->merkDagang}}</td>
-                    <td>{{ $dun->pengaduan->type}}</td>
-                    <td>{{ $dun->pengaduan->jenisPengaduan}}</td>
+                    <td>{{ $dme->pengaduan->jenisProduk}}</td>
+                    <td>{{ $dme->pengaduan->detailProduk}}</td>
+                    <td>{{ $dme->pengaduan->merkDagang}}</td>
+                    <td>{{ $dme->pengaduan->type}}</td>
+                    <td>{{ $dme->pengaduan->jenisPengaduan}}</td>
                     
                 </tr>
                 
@@ -170,8 +176,8 @@
             <tbody class="atable">
                 
                 <tr>
-                    <td>{{ $dun->pengaduan->waktuKejadianDitemukan}}</td>
-                    <td>{{ $dun->pengaduan->tempatLokasiKejadian}}</td>
+                    <td>{{ $dme->pengaduan->waktuKejadianDitemukan}}</td>
+                    <td>{{ $dme->pengaduan->tempatLokasiKejadian}}</td>
                 </tr>
                 
             </tbody>
@@ -188,8 +194,8 @@
                 
                 <tr>
 
-                    <td>{{ $dun->pengaduan->buktiPembelian}}</td>
-                    <td>{{ $dun->pengaduan->saksi}}</td>
+                    <td>{{ $dme->pengaduan->buktiPembelian}}</td>
+                    <td>{{ $dme->pengaduan->saksi}}</td>
                     
                 </tr>
                 
@@ -211,9 +217,9 @@
                 
                 <tr>
                     <tr></tr>
-                    <td>{{ $dun->pengaduan->kerugianMaterial}}</td>
-                    <td>{{ $dun->pengaduan->kerugianFisik}}</td>
-                    <td>{{ $dun->pengaduan->kerugianPsikis}}</td>
+                    <td>{{ $dme->pengaduan->kerugianMaterial}}</td>
+                    <td>{{ $dme->pengaduan->kerugianFisik}}</td>
+                    <td>{{ $dme->pengaduan->kerugianPsikis}}</td>
                 </tr>
                 
             </tbody>
@@ -230,7 +236,7 @@
             <tbody class="atable">
                 
                 <tr>
-                    <td>{{ $dun->pengaduan->jenisTuntutan}}</td>
+                    <td>{{ $dme->pengaduan->jenisTuntutan}}</td>
                 </tr>
                 
             </tbody>
@@ -247,7 +253,7 @@
             <tbody class="atable">
                 
                 <tr>
-                    <td>{{ $dun->pengaduan->kronologisPengaduan}}</td>
+                    <td>{{ $dme->pengaduan->kronologisPengaduan}}</td>
                 </tr>
                 
             </tbody>

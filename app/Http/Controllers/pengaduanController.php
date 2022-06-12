@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ResponPengaduan;
 use App\Models\Pengaduan;
 use App\Exports\PengaduanExport;
+use App\Exports\PengaduanDoneExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use DB;
@@ -139,21 +140,79 @@ class pengaduanController extends Controller
     {
         $dun = ResponPengaduan::with('pengaduan');
         $dun = ResponPengaduan::findorfail($id);
-        return view('Pengaduan.detailunresolved', [
+        return view('Pengaduan.DetailPengaduan.detailunresolved', [
             "title" => "Detail Pengaduan"
         ], compact('dun'));
     }
 
+    public function processDetail($id)
+    {
+        $dpr = ResponPengaduan::with('pengaduan');
+        $dpr = ResponPengaduan::findorfail($id);
+        return view('Pengaduan.DetailPengaduan.detailprocess', [
+            "title" => "Detail Pengaduan"
+        ], compact('dpr'));
+    }
+
+    public function mediasiDetail($id)
+    {
+        $dme = ResponPengaduan::with('pengaduan');
+        $dme = ResponPengaduan::findorfail($id);
+        return view('Pengaduan.DetailPengaduan.detailmediasi', [
+            "title" => "Detail Pengaduan"
+        ], compact('dme'));
+    }
+
+    public function doneDetail($id)
+    {
+        $ddo = ResponPengaduan::with('pengaduan');
+        $ddo = ResponPengaduan::findorfail($id);
+        return view('Pengaduan.DetailPengaduan.detaildone', [
+            "title" => "Detail Pengaduan"
+        ], compact('ddo'));
+    }
+
     public function pengaduanexport()
     {
-        return Excel::download(new PengaduanExport,'pengaduan.xlsx');
+        $nama_file = 'pengaduan_masuk_'.date('Y-m-d_H-i-s').'.xlsx';
+        return Excel::download(new PengaduanExport, $nama_file);
+    }
+
+    public function pengaduandoneexport()
+    {
+        $nama_file = 'pengaduan_keluar_'.date('Y-m-d_H-i-s').'.xlsx';
+        return Excel::download(new PengaduanDoneExport, $nama_file);
     }
 
     public function unresolvedexport($id)
     {
         $dun = ResponPengaduan::with('pengaduan');
         $dun = ResponPengaduan::findorfail($id);
-    	$pdf = PDF::loadview('Pengaduan.detailunresolvedpdf', compact('dun'));
+    	$pdf = PDF::loadview('Pengaduan.Export.detailunresolvedpdf', compact('dun'));
+    	return $pdf->download('laporan-pengaduan-pdf');
+    }
+
+    public function processexport($id)
+    {
+        $dpr = ResponPengaduan::with('pengaduan');
+        $dpr = ResponPengaduan::findorfail($id);
+    	$pdf = PDF::loadview('Pengaduan.Export.detailprocesspdf', compact('dpr'));
+    	return $pdf->download('laporan-pengaduan-pdf');
+    }
+
+    public function mediasiexport($id)
+    {
+        $dme = ResponPengaduan::with('pengaduan');
+        $dme = ResponPengaduan::findorfail($id);
+    	$pdf = PDF::loadview('Pengaduan.Export.detailmediasipdf', compact('dme'));
+    	return $pdf->download('laporan-pengaduan-pdf');
+    }
+
+    public function doneexport($id)
+    {
+        $ddo = ResponPengaduan::with('pengaduan');
+        $ddo = ResponPengaduan::findorfail($id);
+    	$pdf = PDF::loadview('Pengaduan.Export.detaildonepdf', compact('ddo'));
     	return $pdf->download('laporan-pengaduan-pdf');
     }
 
@@ -172,7 +231,7 @@ class pengaduanController extends Controller
                 'status' => "success"
             ], 200);
         } catch (\Exception $exp) {
-            DB::rollBack(); // Tell Laravel, "It's not you, it's me. Please don't persist to DB"
+            DB::rollBack();
             return response([
                 'message' => $exp->getMessage(),
                 'status' => 'failed'

@@ -20,6 +20,7 @@
                 <th>Tanggal Mediasi</th>
                 <th>Tempat Mediasi</th>
                 <th>Status</th>
+                <th>Lihat Detail</th>
                 <th></th>
             </tr>
         </thead>
@@ -36,6 +37,7 @@
                 <td>{{ $item->tanggalMediasi }}</td>
                 <td>{{ $item->tempatMediasi }}</td>
                 <td>{{ $item->statusPengaduan }}</td>
+                <td><a href="{{ url('detailpengaduanmediasi', $item->id) }}"><span class="material-icons-sharp">find_in_page</span></a></td>
                 <td>
                     <button class="btn btn-success" onclick="togglepopup('{{ $item->pengaduan->id }}')">Report</button>
                     <div class="popup" id="popup-1">

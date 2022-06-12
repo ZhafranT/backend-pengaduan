@@ -19,6 +19,7 @@
                 <th>Jenis Pengaduan</th>
                 <th>Tanggal Proses</th>
                 <th>Status</th>
+                <th>Lihat Detail</th>
                 <th></th>
             </tr>
         </thead>
@@ -33,6 +34,7 @@
                 <td>{{ $item->pengaduan->jenisPengaduan }}</td>
                 <td>{{ $item->updated_at }}</td>
                 <td>{{ $item->statusPengaduan }}</td>
+                <td><a href="{{ url('detailpengaduanprocess', $item->id) }}"><span class="material-icons-sharp">find_in_page</span></a></td>
                 <td>
                     <button class="btn btn-primary" onclick="togglepopup('{{ $item->pengaduan->id }}')">Mediasi</button>
                     <div class="popup" id="popup-1">

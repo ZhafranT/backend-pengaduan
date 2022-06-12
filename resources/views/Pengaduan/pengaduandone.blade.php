@@ -7,6 +7,7 @@
 <div class="pengaduan-pelanggan">
 
     <h2 class="mt-5">Pengaduan Selesai</h2>
+    <a href="/exportpengaduandone" style="float:right" class="btn btn-success mb-3"><i class="bi bi-file-earmark-spreadsheet-fill"></i> Download data rekap keluar (.xlsx)</a>
     <br><br><br>
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <thead>
@@ -19,6 +20,7 @@
                 <th>Jenis Pengaduan</th>
                 <th>Tanggal</th>
                 <th>Status</th>
+                <th>Lihat Detail</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +34,7 @@
                 <td>{{ $item->pengaduan->jenisPengaduan }}</td>
                 <td>{{ $item->updated_at }}</td>
                 <td>{{ $item->statusPengaduan }}</td>
+                <td><a href="{{ url('detailpengaduandone', $item->id) }}"><span class="material-icons-sharp">find_in_page</span></a></td>
             </tr>
             @endforeach
         </tbody>

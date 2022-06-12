@@ -4,20 +4,43 @@
 
 <h2 class="mt-5">Detail Pengaduan</h2>
 
-<a href="{{ url('exportpengaduanpdf', $dun->id) }}" style="float:right" class="btn btn-danger mb-3"><i class="bi bi-file-earmark-spreadsheet-fill"></i> Download Data (.PDF)</a>
+<a href="{{ url('doneexportpdf', $ddo->id) }}" style="float:right" class="btn btn-danger mb-3"><i class="bi bi-file-earmark-spreadsheet-fill"></i> Download Data (.PDF)</a>
 
 <table class="table table-bordered mt-5">
     <thead class="table-success">
         <tr>
             <th>ID Pengaduan</th>
             <th>ID User</th>
+            <th>Status Pengaduan</th>
+            <th>Tanggal Mediasi</th>
+            <th>Tempat Mediasi</th>
         </tr>
     </thead>
     <tbody class="atable">
         
         <tr>
-            <td>{{ $dun->pengaduan->id }}</td>
-            <td>{{ $dun->pengaduan->user_id }}</td>
+            <td>{{ $ddo->pengaduan->id }}</td>
+            <td>{{ $ddo->pengaduan->user_id }}</td>
+            <td>{{ $ddo->statusPengaduan }}</td>
+            <td>{{ $ddo->tanggalMediasi }}</td>
+            <td>{{ $ddo->tempatMediasi }}</td>
+        </tr>
+        
+    </tbody>
+</table>
+
+<table class="table table-bordered mt-5">
+    <thead class="table-success">
+        <tr>
+            <th>Tanggal Report</th>
+            <th>Report</th>
+        </tr>
+    </thead>
+    <tbody class="atable">
+        
+        <tr>
+            <td>{{ $ddo->updated_at }}</td>
+            <td>{{ $ddo->reportMediasi }}</td>
         </tr>
         
     </tbody>
@@ -41,16 +64,16 @@
     <tbody class="atable">
         
         <tr>
-            <td>{{ $dun->pengaduan->nama }}</td>
-            <td>{{ $dun->pengaduan->jenisKelamin }}</td>
-            <td>{{ date('d-m-Y', strtotime($dun->pengaduan->tanggalLahir)) }}</td>
-            <td>{{ $dun->pengaduan->noIdentitas }}</td>
-            <td>{{ $dun->pengaduan->telepon }}</td>
-            <td>{{ $dun->pengaduan->email }}</td>
-            <td>{{ $dun->pengaduan->alamat }}</td>
-            <td>{{ $dun->pengaduan->provinsi }}</td>
-            <td>{{ $dun->pengaduan->kotaKabupaten }}</td>
-            <td>{{ $dun->pengaduan->kodePos }}</td>
+            <td>{{ $ddo->pengaduan->nama }}</td>
+            <td>{{ $ddo->pengaduan->jenisKelamin }}</td>
+            <td>{{ date('d-m-Y', strtotime($ddo->pengaduan->tanggalLahir)) }}</td>
+            <td>{{ $ddo->pengaduan->noIdentitas }}</td>
+            <td>{{ $ddo->pengaduan->telepon }}</td>
+            <td>{{ $ddo->pengaduan->email }}</td>
+            <td>{{ $ddo->pengaduan->alamat }}</td>
+            <td>{{ $ddo->pengaduan->provinsi }}</td>
+            <td>{{ $ddo->pengaduan->kotaKabupaten }}</td>
+            <td>{{ $ddo->pengaduan->kodePos }}</td>
         </tr>
         
     </tbody>
@@ -69,11 +92,11 @@
     <tbody class="atable">
         
         <tr>
-            <td>{{ $dun->pengaduan->alamatTempatBarangJasa }}</td>
-            <td>{{ $dun->pengaduan->teleponPelakuUsaha }}</td>
-            <td>{{ $dun->pengaduan->provinsiPelakuUsaha }}</td>
-            <td>{{ $dun->pengaduan->kotaKabupatenPelakuUsaha }}</td>
-            <td>{{ $dun->pengaduan->kodePosPelakuUsaha }}</td>
+            <td>{{ $ddo->pengaduan->alamatTempatBarangJasa }}</td>
+            <td>{{ $ddo->pengaduan->teleponPelakuUsaha }}</td>
+            <td>{{ $ddo->pengaduan->provinsiPelakuUsaha }}</td>
+            <td>{{ $ddo->pengaduan->kotaKabupatenPelakuUsaha }}</td>
+            <td>{{ $ddo->pengaduan->kodePosPelakuUsaha }}</td>
         </tr>
         
     </tbody>
@@ -92,11 +115,11 @@
     <tbody class="atable">
         
         <tr>
-            <td>{{ $dun->pengaduan->jenisProduk}}</td>
-            <td>{{ $dun->pengaduan->detailProduk}}</td>
-            <td>{{ $dun->pengaduan->merkDagang}}</td>
-            <td>{{ $dun->pengaduan->type}}</td>
-            <td>{{ $dun->pengaduan->jenisPengaduan}}</td>
+            <td>{{ $ddo->pengaduan->jenisProduk}}</td>
+            <td>{{ $ddo->pengaduan->detailProduk}}</td>
+            <td>{{ $ddo->pengaduan->merkDagang}}</td>
+            <td>{{ $ddo->pengaduan->type}}</td>
+            <td>{{ $ddo->pengaduan->jenisPengaduan}}</td>
             
         </tr>
         
@@ -113,8 +136,8 @@
     <tbody class="atable">
         
         <tr>
-            <td>{{ $dun->pengaduan->waktuKejadianDitemukan}}</td>
-            <td>{{ $dun->pengaduan->tempatLokasiKejadian}}</td>
+            <td>{{ $ddo->pengaduan->waktuKejadianDitemukan}}</td>
+            <td>{{ $ddo->pengaduan->tempatLokasiKejadian}}</td>
         </tr>
         
     </tbody>
@@ -131,8 +154,8 @@
         
         <tr>
 
-            <td><img src="{{ $dun->pengaduan->buktiPembelian }}" alt=""></td>
-            <td>{{ $dun->pengaduan->saksi}}</td>
+            <td><img src="{{ $ddo->pengaduan->buktiPembelian }}" alt=""></td>
+            <td>{{ $ddo->pengaduan->saksi}}</td>
             
         </tr>
         
@@ -154,9 +177,9 @@
         
         <tr>
             <tr></tr>
-            <td>{{ $dun->pengaduan->kerugianMaterial}}</td>
-            <td>{{ $dun->pengaduan->kerugianFisik}}</td>
-            <td>{{ $dun->pengaduan->kerugianPsikis}}</td>
+            <td>{{ $ddo->pengaduan->kerugianMaterial}}</td>
+            <td>{{ $ddo->pengaduan->kerugianFisik}}</td>
+            <td>{{ $ddo->pengaduan->kerugianPsikis}}</td>
         </tr>
         
     </tbody>
@@ -172,7 +195,7 @@
     <tbody class="atable">
         
         <tr>
-            <td>{{ $dun->pengaduan->jenisTuntutan}}</td>
+            <td>{{ $ddo->pengaduan->jenisTuntutan}}</td>
         </tr>
         
     </tbody>
@@ -187,7 +210,7 @@
     <tbody class="atable">
         
         <tr>
-            <td>{{ $dun->pengaduan->kronologisPengaduan}}</td>
+            <td>{{ $ddo->pengaduan->kronologisPengaduan}}</td>
         </tr>
         
     </tbody>

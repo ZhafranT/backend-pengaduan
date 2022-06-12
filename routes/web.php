@@ -31,9 +31,17 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/pengaduanmediasi',[pengaduanController::class, 'indexMediasi'])->name('Pengaduan.pengaduanmediasi');
     Route::get('/pengaduandone',[pengaduanController::class, 'indexDone'])->name('Pengaduan.pengaduandone');
     Route::get('/detailpengaduanunresolved/{id}',[pengaduanController::class, 'unresolvedDetail'])->name('Pengaduan.pengaduanunresolved');
+    Route::get('/detailpengaduanprocess/{id}',[pengaduanController::class, 'processDetail'])->name('Pengaduan.pengaduanprocess');
+    Route::get('/detailpengaduanmediasi/{id}',[pengaduanController::class, 'mediasiDetail'])->name('Pengaduan.pengaduanmediasi');
+    Route::get('/detailpengaduandone/{id}',[pengaduanController::class, 'doneDetail'])->name('Pengaduan.pengaduandone');
 
     Route::get('/exportpengaduan',[pengaduanController::class, 'pengaduanexport'])->name('exportpengaduan');
-    Route::get('/exportpengaduanpdf/{id}',[pengaduanController::class, 'unresolvedexport'])->name('exportpengaduanpdf');
+    Route::get('/exportpengaduandone',[pengaduanController::class, 'pengaduandoneexport'])->name('exportpengaduandone');
+
+    Route::get('/unresolvedexportpdf/{id}',[pengaduanController::class, 'unresolvedexport'])->name('unresolvedexport');
+    Route::get('/processexportpdf/{id}',[pengaduanController::class, 'processexport'])->name('processexport');
+    Route::get('/mediasiexportpdf/{id}',[pengaduanController::class, 'mediasiexport'])->name('mediasiexport');
+    Route::get('/doneexportpdf/{id}',[pengaduanController::class, 'doneexport'])->name('doneexport');
 
     Route::post('/processPengaduan/{id}',[pengaduanController::class, 'updateProcess'])->name('updateprocess');
     Route::post('/processMediasi/{id}',[pengaduanController::class, 'updateMediasi'])->name('updatemediasi');
