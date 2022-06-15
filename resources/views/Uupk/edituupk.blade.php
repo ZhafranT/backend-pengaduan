@@ -19,23 +19,23 @@
                                         @csrf
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Nomor UU</label>
-                                            <input type="text" name="nomorUU" class="form-control" id="nouu" placeholder="" value="{{ $uup->nomorUU }}">
+                                            <input type="text" name="nomorUU" class="form-control" placeholder="" value="{{ $uup->nomorUU }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Bab</label>
-                                            <input type="text" name="bab" class="form-control" id="babno" placeholder="" value="{{ $uup->bab }}">
+                                            <input type="text" name="bab" class="form-control" placeholder="" value="{{ $uup->bab }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Judul</label>
-                                            <input type="text" name="judulBab" class="form-control" id="judul" placeholder="" value="{{ $uup->judulBab }}">
+                                            <input type="text" name="judulBab" class="form-control" placeholder="" value="{{ $uup->judulBab }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Pasal</label>
-                                            <input type="text" name="pasal" class="form-control" id="pasalno" placeholder="" value="{{ $uup->pasal }}">
+                                            <input type="text" name="pasal" class="form-control" placeholder="" value="{{ $uup->pasal }}">
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleFormControlTextarea1" class="form-label">Isi</label>
-                                            <textarea class="form-control" name="isi" id="isipasal" rows="8">{{ $uup->isi }}</textarea>
+                                            <textarea class="form-control" name="isi" rows="8">{{ $uup->isi }}</textarea>
                                         </div>
                                         <div class="mb-3 d-flex justify-content-center">
                                             <input class="btn btn-primary" type="submit" value="Ubah Data">

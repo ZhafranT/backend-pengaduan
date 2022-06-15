@@ -23,12 +23,12 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>
-                    <img src="{{ $item->photo }}" alt="">
+                    <img src="{{ asset('storage/' . $item->image) }}" alt="">
                 </td>
                 <td>{{ $item->judulBerita }}</td>
                 <td>{{ $item->isiBerita }}</td>
                 <td>{{ $item->admin->name }}</td>
-                <td>{{ $item->updated_at }}</td>
+                <td>{{ date('d-m-Y H:i:s', strtotime($item->updated_at)) }}</td>
                 <td>
                     <a class="bi bi-pencil-square" href="{{ url('editberita', $item->id) }}"></a> |
                     <a class="bi bi-trash-fill" href="{{ url('deleteberita', $item->id) }}" onclick="return confirm('Are you sure?')"></a>

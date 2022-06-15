@@ -32,7 +32,7 @@
                     <td>{{ $dun->pengaduan->id }}</td>
                     <td>{{ $dun->pengaduan->user_id }}</td>
                     <td>{{ $dun->statusPengaduan }}</td>
-                    <td>{{ $dun->created_at }}</td>
+                    <td>{{ date('d-m-Y H:i:s', strtotime($dun->created_at)) }}</td>
                 </tr>
                 
             </tbody>
@@ -50,7 +50,7 @@
                 </tr>
             </thead>
             <tbody class="atable">
-                
+
                 <tr>
                     <td>{{ $dun->pengaduan->nama }}</td>
                     <td>{{ $dun->pengaduan->jenisKelamin }}</td>
@@ -191,10 +191,8 @@
             <tbody class="atable">
                 
                 <tr>
-
-                    <td>{{ $dun->pengaduan->buktiPembelian}}</td>
+                    <td><img src="{{ $dun->pengaduan->buktiPembelian }}" alt="-" style="width: 50%;"></td>
                     <td>{{ $dun->pengaduan->saksi}}</td>
-                    
                 </tr>
                 
             </tbody>

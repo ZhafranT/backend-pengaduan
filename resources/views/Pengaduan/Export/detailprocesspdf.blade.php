@@ -32,7 +32,7 @@
                     <td>{{ $dpr->pengaduan->id }}</td>
                     <td>{{ $dpr->pengaduan->user_id }}</td>
                     <td>{{ $dpr->statusPengaduan }}</td>
-                    <td>{{ $dpr->updated_at }}</td>
+                    <td>{{ date('d-m-Y H:i:s', strtotime($dpr->updated_at)) }}</td>
                 </tr>
                 
             </tbody>
@@ -192,7 +192,7 @@
                 
                 <tr>
 
-                    <td>{{ $dpr->pengaduan->buktiPembelian}}</td>
+                    <td><img src="{{ $dpr->pengaduan->buktiPembelian }}" alt="-" style="width: 50%;"></td>
                     <td>{{ $dpr->pengaduan->saksi}}</td>
                     
                 </tr>

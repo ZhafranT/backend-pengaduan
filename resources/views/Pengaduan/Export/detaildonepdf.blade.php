@@ -33,7 +33,7 @@
                     <td>{{ $ddo->pengaduan->id }}</td>
                     <td>{{ $ddo->pengaduan->user_id }}</td>
                     <td>{{ $ddo->statusPengaduan }}</td>
-                    <td>{{ $ddo->tanggalMediasi }}</td>
+                    <td>{{ date('d-m-Y', strtotime($ddo->tanggalMediasi)) }}</td>
                     <td>{{ $ddo->tempatMediasi }}</td>
                 </tr>
                 
@@ -50,7 +50,7 @@
             <tbody class="atable">
                 
                 <tr>
-                    <td>{{ $ddo->updated_at }}</td>
+                    <td>{{ date('d-m-Y H:i:s', strtotime($ddo->updated_at)) }}</td>
                     <td>{{ $ddo->reportMediasi }}</td>
                 </tr>
                 
@@ -211,7 +211,7 @@
                 
                 <tr>
 
-                    <td>{{ $ddo->pengaduan->buktiPembelian}}</td>
+                    <td><img src="{{ $ddo->pengaduan->buktiPembelian }}" alt="-" style="width: 50%;"></td>
                     <td>{{ $ddo->pengaduan->saksi}}</td>
                     
                 </tr>

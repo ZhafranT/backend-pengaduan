@@ -82,8 +82,8 @@ class DataSeeder extends Seeder
             'kerugianFisik' => "uyriweuhw",
             'kerugianPsikis' => "uyriweuhw",
             'jenisTuntutan' => "uyriweuhw",
-            'created_at' => new \DateTime,
-            'updated_at' => null,
+            'buktiPembelian' => 'asset/portrait.jpg',
+            'kronologisPengaduan' => "efufheuaihfuiashfuihfdiauhfisabfdjahfiuwhdfruiwahfaiusfbniasufhwiuadhiwusfhbsiajfhasifhasiudfch ufhdsfhiusdfhuidshfuisdfhuisdhfis"
         ));
 
         $pengaduan2 = Pengaduan::create(array(
@@ -115,8 +115,8 @@ class DataSeeder extends Seeder
             'kerugianFisik' => "uyriweuhw",
             'kerugianPsikis' => "uyriweuhw",
             'jenisTuntutan' => "uyriweuhw",
-            'created_at' => new \DateTime,
-            'updated_at' => null,
+            'buktiPembelian' => 'asset/landscape.jpg',
+            'kronologisPengaduan' => "efufheuaihfuiashfuihfdiauhfisabfdjahfiuwhdfruiwahfaiusfbniasufhwiuadhiwusfhbsiajfhasifhasiudfch ufhdsfhiusdfhuidshfuisdfhuisdhfis"
         ));
 
         $pengaduan3 = Pengaduan::create(array(
@@ -148,8 +148,8 @@ class DataSeeder extends Seeder
             'kerugianFisik' => "uyriweuhw",
             'kerugianPsikis' => "uyriweuhw",
             'jenisTuntutan' => "uyriweuhw",
-            'created_at' => new \DateTime,
-            'updated_at' => null,
+            'buktiPembelian' => 'asset/logo-kemendag.png',
+            'kronologisPengaduan' => "efufheuaihfuiashfuihfdiauhfisabfdjahfiuwhdfruiwahfaiusfbniasufhwiuadhiwusfhbsiajfhasifhasiudfch ufhdsfhiusdfhuidshfuisdfhuisdhfis"
         ));
 
         $pengaduan4 = Pengaduan::create(array(
@@ -181,8 +181,8 @@ class DataSeeder extends Seeder
             'kerugianFisik' => "uyriweuhw",
             'kerugianPsikis' => "uyriweuhw",
             'jenisTuntutan' => "uyriweuhw",
-            'created_at' => new \DateTime,
-            'updated_at' => null,
+            'buktiPembelian' => 'asset/square.webp',
+            'kronologisPengaduan' => "efufheuaihfuiashfuihfdiauhfisabfdjahfiuwhdfruiwahfaiusfbniasufhwiuadhiwusfhbsiajfhasifhasiudfch ufhdsfhiusdfhuidshfuisdfhuisdhfis"
         ));
 
         $pengaduan5 = Pengaduan::create(array(
@@ -214,8 +214,8 @@ class DataSeeder extends Seeder
             'kerugianFisik' => "uyriweuhw",
             'kerugianPsikis' => "uyriweuhw",
             'jenisTuntutan' => "uyriweuhw",
-            'created_at' => new \DateTime,
-            'updated_at' => null,
+            'buktiPembelian' => 'asset/profilepic.webp',
+            'kronologisPengaduan' => "efufheuaihfuiashfuihfdiauhfisabfdjahfiuwhdfruiwahfaiusfbniasufhwiuadhiwusfhbsiajfhasifhasiudfch ufhdsfhiusdfhuidshfuisdfhuisdhfis",
         ));
 
         $pengaduan6 = Pengaduan::create(array(
@@ -247,7 +247,7 @@ class DataSeeder extends Seeder
             'kerugianFisik' => "uyriweuhw",
             'kerugianPsikis' => "uyriweuhw",
             'jenisTuntutan' => "uyriweuhw",
-            'created_at' => new \DateTime,
+            'created_at' => "2022-05-13 10:37:22",
             'updated_at' => null,
         ));
 
@@ -280,7 +280,7 @@ class DataSeeder extends Seeder
             'kerugianFisik' => "uyriweuhw",
             'kerugianPsikis' => "uyriweuhw",
             'jenisTuntutan' => "uyriweuhw",
-            'created_at' => new \DateTime,
+            'created_at' => "2022-05-13 10:37:22",
             'updated_at' => null,
         ));
 
@@ -313,7 +313,7 @@ class DataSeeder extends Seeder
             'kerugianFisik' => "uyriweuhw",
             'kerugianPsikis' => "uyriweuhw",
             'jenisTuntutan' => "uyriweuhw",
-            'created_at' => new \DateTime,
+            'created_at' => "2022-05-13 10:37:22",
             'updated_at' => null,
         ));
 
@@ -346,7 +346,7 @@ class DataSeeder extends Seeder
             'kerugianFisik' => "uyriweuhw",
             'kerugianPsikis' => "uyriweuhw",
             'jenisTuntutan' => "uyriweuhw",
-            'created_at' => new \DateTime,
+            'created_at' => "2022-07-13 10:37:22",
             'updated_at' => null,
         ));
 
@@ -379,7 +379,7 @@ class DataSeeder extends Seeder
             'kerugianFisik' => "uyriweuhw",
             'kerugianPsikis' => "uyriweuhw",
             'jenisTuntutan' => "uyriweuhw",
-            'created_at' => new \DateTime,
+            'created_at' => "2022-07-13 10:37:22",
             'updated_at' => null,
         ));
 
@@ -412,7 +412,7 @@ class DataSeeder extends Seeder
             'kerugianFisik' => "uyriweuhw",
             'kerugianPsikis' => "uyriweuhw",
             'jenisTuntutan' => "uyriweuhw",
-            'created_at' => new \DateTime,
+            'created_at' => "2022-08-13 10:37:22",
             'updated_at' => null,
         ));
 

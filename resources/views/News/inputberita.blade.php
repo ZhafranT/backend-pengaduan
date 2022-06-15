@@ -18,15 +18,21 @@
                             {{csrf_field()}}
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label">Judul</label>
-                                <input type="text" name="judul" class="form-control" id="judulberita" placeholder="Judul Berita">
+                                <input type="text" name="judulBerita" class="form-control" id="judulberita" placeholder="Judul Berita">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Gambar</label>
-                                <input type="file" name="photoberita" class="form-control">
+                                <label for="image" class="form-label">Gambar</label>
+                                <img class="img-preview img-fluid mb-3 col-sm-5">
+                                <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" id="image" onchange="previewImage()">
+                                @error('image')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Isi Berita</label>
-                                <textarea class="form-control" name="isi" id="isiberita" rows="8"></textarea>
+                                <textarea class="form-control" name="isiBerita" id="isiberita" rows="8"></textarea>
                             </div>
                             <div class="mb-3 d-flex justify-content-center">
                                 <input class="btn btn-success" type="submit" value="Submit">
@@ -38,4 +44,20 @@
         </div>
     </section>
 </div>
+
+<script>
+    function previewImage() {
+        const image = document.querySelector('#image');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = 'block';
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+</script>
 @endsection

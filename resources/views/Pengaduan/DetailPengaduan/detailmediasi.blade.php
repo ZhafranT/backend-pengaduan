@@ -22,7 +22,7 @@
             <td>{{ $dme->pengaduan->id }}</td>
             <td>{{ $dme->pengaduan->user_id }}</td>
             <td>{{ $dme->statusPengaduan }}</td>
-            <td>{{ $dme->tanggalMediasi }}</td>
+            <td>{{ date('d-m-Y', strtotime($dme->tanggalMediasi)) }}</td>
             <td>{{ $dme->tempatMediasi }}</td>
         </tr>
         
@@ -136,10 +136,9 @@
     <tbody class="atable">
         
         <tr>
-
-            <td><img src="{{ $dme->pengaduan->buktiPembelian }}" alt=""></td>
+            <td><img src="{{URL::asset($dme->pengaduan->buktiPembelian)}}" alt="-" style="width: 50%;"></td>
+            {{-- <td><img src="{{ $dme->pengaduan->buktiPembelian }}" alt=""></td> --}}
             <td>{{ $dme->pengaduan->saksi}}</td>
-            
         </tr>
         
     </tbody>

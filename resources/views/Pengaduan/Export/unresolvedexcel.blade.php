@@ -7,7 +7,7 @@
     <title>Pengaduan Masuk</title>
 </head>
 <body>
-    <h2>PENGADUAN MASUK PER-TANGGAL XX</h2>
+    <h2>PENGADUAN MASUK PER-TANGGAL {{ date('d-m-Y H:i:s') }}</h2>
     <table>
         <thead>
         <tr>

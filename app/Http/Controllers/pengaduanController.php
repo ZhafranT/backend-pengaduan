@@ -174,13 +174,13 @@ class pengaduanController extends Controller
 
     public function pengaduanexport()
     {
-        $nama_file = 'pengaduan_masuk_'.date('Y-m-d_H-i-s').'.xlsx';
+        $nama_file = 'pengaduan_masuk_'.date('d-m-Y_H:i:s').'.xlsx';
         return Excel::download(new PengaduanExport, $nama_file);
     }
 
     public function pengaduandoneexport()
     {
-        $nama_file = 'pengaduan_keluar_'.date('Y-m-d_H-i-s').'.xlsx';
+        $nama_file = 'pengaduan_keluar_'.date('d-m-Y_H:i:s').'.xlsx';
         return Excel::download(new PengaduanDoneExport, $nama_file);
     }
 
@@ -189,7 +189,8 @@ class pengaduanController extends Controller
         $dun = ResponPengaduan::with('pengaduan');
         $dun = ResponPengaduan::findorfail($id);
     	$pdf = PDF::loadview('Pengaduan.Export.detailunresolvedpdf', compact('dun'));
-    	return $pdf->download('laporan-pengaduan-pdf');
+        $nama_file = 'detail_unresolved_'.date('d-m-Y_H:i:s').'.pdf';
+    	return $pdf->download($nama_file);
     }
 
     public function processexport($id)
@@ -197,7 +198,8 @@ class pengaduanController extends Controller
         $dpr = ResponPengaduan::with('pengaduan');
         $dpr = ResponPengaduan::findorfail($id);
     	$pdf = PDF::loadview('Pengaduan.Export.detailprocesspdf', compact('dpr'));
-    	return $pdf->download('laporan-pengaduan-pdf');
+        $nama_file = 'detail_process_'.date('d-m-Y_H:i:s').'.pdf';
+    	return $pdf->download($nama_file);
     }
 
     public function mediasiexport($id)
@@ -205,7 +207,8 @@ class pengaduanController extends Controller
         $dme = ResponPengaduan::with('pengaduan');
         $dme = ResponPengaduan::findorfail($id);
     	$pdf = PDF::loadview('Pengaduan.Export.detailmediasipdf', compact('dme'));
-    	return $pdf->download('laporan-pengaduan-pdf');
+        $nama_file = 'detail_mediasi_'.date('d-m-Y_H:i:s').'.pdf';
+    	return $pdf->download($nama_file);
     }
 
     public function doneexport($id)
@@ -213,7 +216,8 @@ class pengaduanController extends Controller
         $ddo = ResponPengaduan::with('pengaduan');
         $ddo = ResponPengaduan::findorfail($id);
     	$pdf = PDF::loadview('Pengaduan.Export.detaildonepdf', compact('ddo'));
-    	return $pdf->download('laporan-pengaduan-pdf');
+        $nama_file = 'detail_done_'.date('d-m-Y_H:i:s').'.pdf';
+    	return $pdf->download($nama_file);
     }
 
     public function pengaduanTransaction(Request $request)
