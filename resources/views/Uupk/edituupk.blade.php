@@ -18,23 +18,23 @@
                                     <form class="form-add" action="{{ url('updateuupk',$uup->id) }}" method="post">
                                         @csrf
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Nomor UU</label>
-                                            <input type="text" name="nomorUU" class="form-control" placeholder="" value="{{ $uup->nomorUU }}">
+                                            <label for="nomorUU" class="form-label">Nomor UU</label>
+                                            <input type="text" name="nomorUU" class="form-control" value="{{ $uup->nomorUU }}">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Bab</label>
-                                            <input type="text" name="bab" class="form-control" placeholder="" value="{{ $uup->bab }}">
+                                            <label for="bab" class="form-label">Bab</label>
+                                            <input type="text" name="bab" class="form-control" value="{{ $uup->bab }}">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Judul</label>
-                                            <input type="text" name="judulBab" class="form-control" placeholder="" value="{{ $uup->judulBab }}">
+                                            <label for="judulBab" class="form-label">Judul</label>
+                                            <input type="text" name="judulBab" class="form-control" value="{{ $uup->judulBab }}">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Pasal</label>
-                                            <input type="text" name="pasal" class="form-control" placeholder="" value="{{ $uup->pasal }}">
+                                            <label for="pasal" class="form-label">Pasal</label>
+                                            <input type="text" name="pasal" class="form-control" value="{{ $uup->pasal }}">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="exampleFormControlTextarea1" class="form-label">Isi</label>
+                                            <label for="isi" class="form-label">Isi</label>
                                             <textarea class="form-control" name="isi" rows="8">{{ $uup->isi }}</textarea>
                                         </div>
                                         <div class="mb-3 d-flex justify-content-center">

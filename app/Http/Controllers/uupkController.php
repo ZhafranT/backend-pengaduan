@@ -42,14 +42,22 @@ class uupkController extends Controller
      */
     public function store(Request $request)
     {
-        Uupk::create([
-            'admin_id' => auth()->id(),
-            'nomorUU' => $request->nouu,
-            'bab' => $request->babno,
-            'judulBab' => $request->judul,
-            'pasal' => $request->pasalno,
-            'isi' => $request->isipasal,
-        ]);
+
+        try {
+            $validatedData = $request->validate([
+                'nomorUU' => 'required',
+                'bab' => 'required',
+                'judulBab' => 'required',
+                'pasal' => 'required',
+                'isi' => 'required',
+            ]);
+            
+            $validatedData['admin_id'] = auth()->user()->id;
+    
+            Uupk::create($validatedData);
+        } catch (\Throwable $th) {
+            dd($th);
+        }
 
         return redirect('uupk')->with('success', 'UU Berhasil Diupload!');
     }
@@ -90,8 +98,24 @@ class uupkController extends Controller
     public function update(Request $request, $id)
     {
         $uup = Uupk::findorfail($id);
-        $uup->update($request->all());
+        // $uup->update($request->all());
         // dd($ber);
+
+        $rules = [
+            'nomorUU' => 'required',
+            'bab' => 'required',
+            'judulBab' => 'required',
+            'pasal' => 'required',
+            'isi' => 'required',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        $validatedData['admin_id'] = auth()->user()->id;
+
+        Uupk::where('id', $uup->id)
+            ->update($validatedData);
+
         return redirect('uupk')->with('success', 'UU Berhasil Diubah!');
     }
 
@@ -104,7 +128,7 @@ class uupkController extends Controller
     public function destroy($id)
     {
         $uup = Uupk::findorfail($id);
-        $uup->delete();
+        Uupk::destroy($uup->id);
         return back()->with('info', 'UU Berhasil Dihapus!');;
     }
 

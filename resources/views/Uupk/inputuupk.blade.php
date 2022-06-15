@@ -18,24 +18,24 @@
                             <form class="form-add" method="post" action="/submituupk" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Nomor UU</label>
-                                    <input type="text" name="nouu" class="form-control" id="nomoruu" placeholder="">
+                                    <label for="nomorUU" class="form-label">Nomor UU</label>
+                                    <input type="text" name="nomorUU" class="form-control" id="nomorUU" placeholder="">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Bab</label>
-                                    <input type="text" name="babno" class="form-control" id="nobab" placeholder="">
+                                    <label for="bab" class="form-label">Bab</label>
+                                    <input type="text" name="bab" class="form-control" id="bab" placeholder="">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Judul</label>
-                                    <input type="text" name="judul" class="form-control" id="judulbab" placeholder="">
+                                    <label for="judulBab" class="form-label">Judul</label>
+                                    <input type="text" name="judulBab" class="form-control" id="judulBab" placeholder="">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Pasal</label>
-                                    <input type="text" name="pasalno" class="form-control" id="nopasal" placeholder="">
+                                    <label for="pasal" class="form-label">Pasal</label>
+                                    <input type="text" name="pasal" class="form-control" id="pasal" placeholder="">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlTextarea1" class="form-label">Isi</label>
-                                    <textarea class="form-control" name="isipasal" id="pasalisi" rows="8"></textarea>
+                                    <label for="isi" class="form-label">Isi</label>
+                                    <textarea class="form-control" name="isi" id="isi" rows="8"></textarea>
                                 </div>
                                 <div class="mb-3 d-flex justify-content-center">
                                     <input class="btn btn-success" type="submit" value="Submit">

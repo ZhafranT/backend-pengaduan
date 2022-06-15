@@ -68,11 +68,13 @@ class newsController extends Controller
             $validatedData['admin_id'] = auth()->user()->id;
     
             Berita::create($validatedData);
+            return redirect('berita')->with('success', 'Berita Berhasil Dibuat!');
         } catch (\Throwable $th) {
-            dd($th);
+            $message = $th->getMessage();
+            return view('News.inputberita', [
+                "title" => "Input Berita"
+            ], compact('message'));
         }
-
-        return redirect('berita')->with('success', 'Berita Berhasil Dibuat!');
     }
 
     /**
@@ -162,12 +164,11 @@ class newsController extends Controller
 
     public function newsApi()
     {
-        $data = Berita::all();
-
-        if ($data) {
+        try {
+            $data = Berita::all();
             return ApiFormatter::createApi(200, 'Success', $data);
-        } else {
-            return ApiFormatter::createApi(400, 'Failed');
+        } catch (\Throwable $th) {
+            return ApiFormatter::createApi(500, 'Internal Server Error',$th->getMessage());
         }
     }
 }
