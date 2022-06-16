@@ -17,7 +17,7 @@ class Berita extends Model
     protected $fillable = [
         'admin_id',
         'judulBerita',
-        'image',
+        'photo',
         'isiBerita',
     ];
 }

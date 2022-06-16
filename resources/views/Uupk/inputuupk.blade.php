@@ -1,6 +1,8 @@
 @extends('layout.main')
 
 @section('container')
+
+@php ($errmsg = empty($message) ? '' : $message)
 <main>
     <div class="input-uupk-baru">
         <div class="container mt-5">
@@ -36,6 +38,9 @@
                                 <div class="mb-3">
                                     <label for="isi" class="form-label">Isi</label>
                                     <textarea class="form-control" name="isi" id="isi" rows="8"></textarea>
+                                </div>
+                                <div class="mb-3" style="color: red">
+                                    {{ $errmsg }}
                                 </div>
                                 <div class="mb-3 d-flex justify-content-center">
                                     <input class="btn btn-success" type="submit" value="Submit">

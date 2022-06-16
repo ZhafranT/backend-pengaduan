@@ -22,12 +22,12 @@
             <h3>Pengaduan</h3>
         </a>
 
-        <a href="/berita" class="{{ ($title === "Berita") ? 'active' : '' }}">
+        <a href="/berita" class="{{ ($title === "Berita") || ($title === "Input Berita") || ($title === "Edit Berita") ? 'active' : '' }}">
             <span class="material-icons-sharp">newspaper</span>
             <h3>Berita</h3>
         </a>
 
-        <a href="/uupk" class="{{ ($title === "UU Pengaduan Konsumen") ? 'active' : '' }}">
+        <a href="/uupk" class="{{ ($title === "UU Pengaduan Konsumen") || ($title === "Input UUPK") || ($title === "Edit UUPK") ? 'active' : '' }}">
             <span class="material-icons-sharp">list_alt</span>
             <h3>UU PK</h3>
         </a>

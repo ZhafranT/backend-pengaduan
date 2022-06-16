@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Storage;
 use App\Helper\ApiFormatter;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -18,6 +17,7 @@ class newsController extends Controller
     public function index()
     {
         $dtBerita = Berita::with('admin')->get();
+
         return view('News.berita', [
             "title" => "Berita"
         ], compact('dtBerita'));
@@ -43,37 +43,37 @@ class newsController extends Controller
      */
     public function store(Request $request)
     {
-        // $type = $request->file('photoberita')->extension();
-        // $imagedata = file_get_contents($request->file('photoberita'));
-        // $base64 = 'data:image/' . $type . ';base64,' . base64_encode($imagedata);
-        
-        // Berita::create([
-        //     'admin_id' => auth()->id(),
-        //     'judulBerita' => $request->judul,
-        //     'photo' => $base64,
-        //     'isiBerita' => $request->isi,
-        // ]);
-        
         try {
+
             $validatedData = $request->validate([
                 'judulBerita' => 'required|max:50',
-                'image' => 'image|file|max:1024',
+                'photo' => 'required|image|file|max:1024',
                 'isiBerita' => 'required'
-            ]);        
-    
-            if($request->file('image')) {
-                $validatedData['image'] = $request->file('image')->store('berita-images');
-            }
-            
+            ]);
+
             $validatedData['admin_id'] = auth()->user()->id;
-    
-            Berita::create($validatedData);
+
+            $type = $request->file('photo')->extension();
+            $imagedata = file_get_contents($request->file('photo'));
+            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($imagedata);
+            
+            Berita::create([
+                'admin_id' => $validatedData['admin_id'],
+                'judulBerita' => $validatedData['judulBerita'],
+                'photo' => $base64,
+                'isiBerita' => $validatedData['isiBerita'],
+            ]);
+
             return redirect('berita')->with('success', 'Berita Berhasil Dibuat!');
+
         } catch (\Throwable $th) {
+
+            // dd($th);
             $message = $th->getMessage();
             return view('News.inputberita', [
                 "title" => "Input Berita"
             ], compact('message'));
+
         }
     }
 
@@ -97,7 +97,7 @@ class newsController extends Controller
     public function edit($id)
     {
         $ber = Berita::findorfail($id);
-        // dd($ber);
+        
         return view('News.editberita', [
             "title" => "Edit Berita"
         ], compact('ber'));
@@ -112,37 +112,47 @@ class newsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ber = Berita::findorfail($id);
-        // $ber->update($request->all());
-        // dd($request->all());
+        try {
 
-        // $ber->update([
-        //     'judulBerita' => $request->judulBerita,
-        //     'isiBerita' => $request->isiBerita,
-        //     'admin_id' => auth()->id(),
-        // ]);
+            $ber = Berita::findorfail($id);
         
-        $rules = [
-            'judulBerita' => 'required|max:50',
-            'image' => 'image|file|max:1024',
-            'isiBerita' => 'required'
-        ];
+            $rules = [
+                'judulBerita' => 'required|max:50',
+                'photo' => 'required|image|file|max:1024',
+                'isiBerita' => 'required'
+            ];
 
-        $validatedData = $request->validate($rules);
+            $validatedData = $request->validate($rules);
 
-        if($request->file('image')) {
-            if($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
-            $validatedData['image'] = $request->file('image')->store('berita-images');
+            $validatedData['admin_id'] = auth()->user()->id;
+
+            // if($request->file('photo')) {
+            //     $validatedData['photo'] = $request->file('photo')->store();
+            // }    
+
+            $type = $request->file('photo')->extension();
+            $imagedata = file_get_contents($request->file('photo'));
+            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($imagedata);
+
+            Berita::where('id', $ber->id)
+                ->update([
+                    'admin_id' => $validatedData['admin_id'],
+                    'judulBerita' => $validatedData['judulBerita'],
+                    'photo' => $base64,
+                    'isiBerita' => $validatedData['isiBerita'],
+                ]);
+
+            return redirect('berita')->with('success', 'Berita Berhasil Diubah!');
+
+        } catch (\Throwable $th) {
+            
+            dd($th);
+            $message = $th->getMessage();
+            return view('News.editberita', [
+                "title" => "Edit Berita"
+            ], compact('message'));
+
         }
-
-        $validatedData['admin_id'] = auth()->user()->id;
-
-        Berita::where('id', $ber->id)
-            ->update($validatedData);
-
-        return redirect('berita')->with('success', 'Berita Berhasil Diubah!');
     }
 
     /**
@@ -154,11 +164,7 @@ class newsController extends Controller
     public function destroy($id)
     {
         $ber = Berita::findorfail($id);
-        // $ber->delete();
-        if($ber->image) {
-            Storage::delete($ber->image);
-        }
-        Berita::destroy($ber->id);
+        $ber->delete();
         return back()->with('info', 'Berita Berhasil Dihapus!');;
     }
 

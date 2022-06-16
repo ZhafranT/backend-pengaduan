@@ -17,6 +17,7 @@ class uupkController extends Controller
     public function index()
     {
         $dtUupk = Uupk::all();
+
         return view('Uupk.uupk', [
             "title" => "UU Pengaduan Konsumen"
         ], compact('dtUupk'));
@@ -30,7 +31,7 @@ class uupkController extends Controller
     public function create()
     {
         return view('Uupk.inputuupk', [
-            "title" => " Input UUPK"
+            "title" => "Input UUPK"
         ]);
     }
 
@@ -56,7 +57,11 @@ class uupkController extends Controller
     
             Uupk::create($validatedData);
         } catch (\Throwable $th) {
-            dd($th);
+            // dd($th);
+            $message = $th->getMessage();
+            return view('Uupk.inputuupk', [
+                "title" => "Input UUPK"
+            ], compact('message'));
         }
 
         return redirect('uupk')->with('success', 'UU Berhasil Diupload!');
@@ -84,7 +89,7 @@ class uupkController extends Controller
         $uup = Uupk::findorfail($id);
         // dd($ber);
         return view('Uupk.edituupk', [
-            "title" => " Edit UUPK"
+            "title" => "Edit UUPK"
         ], compact('uup'));
     }
     
@@ -134,12 +139,11 @@ class uupkController extends Controller
 
     public function uupkApi()
     {
-        $data = Uupk::all();
-
-        if ($data) {
+        try {
+            $data = Uupk::all();
             return ApiFormatter::createApi(200, 'Success', $data);
-        } else {
-            return ApiFormatter::createApi(400, 'Failed');
+        } catch (\Throwable $th) {
+            return ApiFormatter::createApi(500, 'Internal Server Error',$th->getMessage());
         }
     }
 }

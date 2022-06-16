@@ -18,22 +18,17 @@
                         <form class="form-add" method="post" action="/submitberita" enctype="multipart/form-data">
                             {{csrf_field()}}
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Judul</label>
-                                <input type="text" name="judulBerita" class="form-control" id="judulberita" placeholder="Judul Berita">
+                                <label for="judulBerita" class="form-label">Judul</label>
+                                <input type="text" name="judulBerita" class="form-control" id="judulBerita" placeholder="Judul Berita">
                             </div>
                             <div class="mb-3">
                                 <label for="image" class="form-label">Gambar</label>
                                 <img class="img-preview img-fluid mb-3 col-sm-5">
-                                <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" id="image" onchange="previewImage()">
-                                <!-- @error('image')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror -->
+                                <input type="file" name="photo" class="form-control" id="image" onchange="previewImage()">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">Isi Berita</label>
-                                <textarea class="form-control" name="isiBerita" id="isiberita" rows="8"></textarea>
+                                <label for="isiBerita" class="form-label">Isi Berita</label>
+                                <textarea class="form-control" name="isiBerita" id="isiBerita" rows="8"></textarea>
                             </div>
                             <div class="mb-3" style="color: red">
                                 {{ $errmsg }}

@@ -23,7 +23,7 @@
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>
-                    <img src="{{ asset('storage/' . $item->image) }}" alt="">
+                    <img src="{{ $item->photo }}" alt="">
                 </td>
                 <td>{{ $item->judulBerita }}</td>
                 <td>{{ $item->isiBerita }}</td>

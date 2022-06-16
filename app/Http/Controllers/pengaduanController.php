@@ -9,6 +9,7 @@ use App\Exports\PengaduanExport;
 use App\Exports\PengaduanDoneExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use App\Helper\ApiFormatter;
 use DB;
 use PDF;
 
@@ -240,6 +241,16 @@ class pengaduanController extends Controller
                 'message' => $exp->getMessage(),
                 'status' => 'failed'
             ], 400);
+        }
+    }
+
+    public function responpengaduanAPI()
+    {
+        try {
+            $data = ResponPengaduan::all();
+            return ApiFormatter::createApi(200, 'Success', $data);
+        } catch (\Throwable $th) {
+            return ApiFormatter::createApi(500, 'Internal Server Error',$th->getMessage());
         }
     }
 }

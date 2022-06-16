@@ -27,6 +27,8 @@ Route::post('/register',[userController::class,'register']);
 
 Route::post('/insertpengaduan',[pengaduanController::class,'pengaduanTransaction']);
 
+Route::get('/respon-pengaduan',[pengaduanController::class,'responpengaduanAPI']);
+
 Route::get('/berita', [newsController::class, 'newsApi']);
 
 Route::get('/uupk', [uupkController::class, 'uupkApi']);
