@@ -118,7 +118,7 @@ class newsController extends Controller
         
             $rules = [
                 'judulBerita' => 'required|max:50',
-                'photo' => 'required|image|file|max:1024',
+                'photo' => 'image|file|max:1024',
                 'isiBerita' => 'required'
             ];
 
@@ -126,31 +126,34 @@ class newsController extends Controller
 
             $validatedData['admin_id'] = auth()->user()->id;
 
-            // if($request->file('photo')) {
-            //     $validatedData['photo'] = $request->file('photo')->store();
-            // }    
-
-            $type = $request->file('photo')->extension();
-            $imagedata = file_get_contents($request->file('photo'));
-            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($imagedata);
-
-            Berita::where('id', $ber->id)
+            if ($request->file('photo') == null) {
+                Berita::where('id', $ber->id)
+                ->update([
+                    'admin_id' => $validatedData['admin_id'],
+                    'judulBerita' => $validatedData['judulBerita'],
+                    'isiBerita' => $validatedData['isiBerita'],
+                ]);
+            } else {
+                $type = $request->file('photo')->extension();
+                $imagedata = file_get_contents($request->file('photo'));
+                $base64 = 'data:image/' . $type . ';base64,' . base64_encode($imagedata);
+                Berita::where('id', $ber->id)
                 ->update([
                     'admin_id' => $validatedData['admin_id'],
                     'judulBerita' => $validatedData['judulBerita'],
                     'photo' => $base64,
                     'isiBerita' => $validatedData['isiBerita'],
                 ]);
+            }
 
             return redirect('berita')->with('success', 'Berita Berhasil Diubah!');
 
         } catch (\Throwable $th) {
-            
-            dd($th);
+    
             $message = $th->getMessage();
             return view('News.editberita', [
                 "title" => "Edit Berita"
-            ], compact('message'));
+            ], compact('message', 'ber'));
 
         }
     }
