@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="form-group">
-        <h2 style="margin-bottom: 50px;">Laporan Pengaduan</h2>
+        <h2 style="margin-bottom: 50px;">Laporan Pengaduan (Selesai)</h2>
 
         <table class="static" rules="all" border="1px" style="width: 100%;">
             <thead>
@@ -43,13 +43,15 @@
         <table class="static" rules="all" border="1px" style="width: 100%;">
             <thead class="table-success">
                 <tr>
-                    <th>Tanggal Report</th>
+                    <th>Id Admin Pereport</th>
+                    <th>Tanggal Dibuat Report</th>
                     <th>Report</th>
                 </tr>
             </thead>
             <tbody class="atable">
                 
                 <tr>
+                    <td>{{ $ddo->admin_id }}</td>
                     <td>{{ date('d-m-Y H:i:s', strtotime($ddo->updated_at)) }}</td>
                     <td>{{ $ddo->reportMediasi }}</td>
                 </tr>

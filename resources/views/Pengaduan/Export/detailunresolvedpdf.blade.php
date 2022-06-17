@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="form-group">
-        <h2 style="margin-bottom: 50px;">Laporan Pengaduan</h2>
+        <h2 style="margin-bottom: 50px;">Laporan Pengaduan (Masuk)</h2>
 
         <table class="static" rules="all" border="1px" style="width: 100%;">
             <thead>

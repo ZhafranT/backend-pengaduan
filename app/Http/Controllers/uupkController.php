@@ -102,26 +102,31 @@ class uupkController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $uup = Uupk::findorfail($id);
-        // $uup->update($request->all());
-        // dd($ber);
+        try {
+            $uup = Uupk::findorfail($id);
 
-        $rules = [
-            'nomorUU' => 'required',
-            'bab' => 'required',
-            'judulBab' => 'required',
-            'pasal' => 'required',
-            'isi' => 'required',
-        ];
+            $rules = [
+                'nomorUU' => 'required',
+                'bab' => 'required',
+                'judulBab' => 'required',
+                'pasal' => 'required',
+                'isi' => 'required',
+            ];
 
-        $validatedData = $request->validate($rules);
+            $validatedData = $request->validate($rules);
 
-        $validatedData['admin_id'] = auth()->user()->id;
+            $validatedData['admin_id'] = auth()->user()->id;
 
-        Uupk::where('id', $uup->id)
-            ->update($validatedData);
+            Uupk::where('id', $uup->id)
+                ->update($validatedData);
 
-        return redirect('uupk')->with('success', 'UU Berhasil Diubah!');
+            return redirect('uupk')->with('success', 'UU Berhasil Diubah!');
+        } catch (\Throwable $th) {
+            $message = $th->getMessage();
+            return view('Uupk.edituupk', [
+                "title" => "Edit UUPK"
+            ], compact('message','uup'));
+        }
     }
 
     /**

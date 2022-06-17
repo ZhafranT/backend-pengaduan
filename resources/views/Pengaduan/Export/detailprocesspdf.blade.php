@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="form-group">
-        <h2 style="margin-bottom: 50px;">Laporan Pengaduan</h2>
+        <h2 style="margin-bottom: 50px;">Laporan Pengaduan (Proses)</h2>
 
         <table class="static" rules="all" border="1px" style="width: 100%;">
             <thead>
@@ -23,6 +23,7 @@
                     <th>ID Pengaduan</th>
                     <th>ID User</th>
                     <th>Status Pengaduan</th>
+                    <th>ID Admin Pemroses</th>
                     <th>Tanggal Diproses</th>
                 </tr>
             </thead>
@@ -32,6 +33,7 @@
                     <td>{{ $dpr->pengaduan->id }}</td>
                     <td>{{ $dpr->pengaduan->user_id }}</td>
                     <td>{{ $dpr->statusPengaduan }}</td>
+                    <td>{{ $dpr->admin_id }}</td>
                     <td>{{ date('d-m-Y H:i:s', strtotime($dpr->updated_at)) }}</td>
                 </tr>
                 

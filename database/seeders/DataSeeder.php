@@ -26,10 +26,32 @@ class DataSeeder extends Seeder
 
         $user1 = User::create(array(
             'email' => "irsadadf@gmail.com",
-            'nik' => "3175052302000004",
+            'nik' => "3175052302000009",
             'namaLengkap' => "Febio Irsadad",
-            'alamat' => "AKampung Asem",
-            'noTelp' => "081282653997",
+            'alamat' => "Kampung Asem",
+            'noTelp' => "081282653991",
+            'gender' => "Pria",
+            'password' => bcrypt('123456'),
+            'token' => null,
+        ));
+
+        $user2 = User::create(array(
+            'email' => "zhafran@gmail.com",
+            'nik' => "3175052302000008",
+            'namaLengkap' => "Muhammad Zhafran Tosa",
+            'alamat' => "Cakung",
+            'noTelp' => "081282653992",
+            'gender' => "Pria",
+            'password' => bcrypt('123456'),
+            'token' => null,
+        ));
+
+        $user3 = User::create(array(
+            'email' => "pashadidan@gmail.com",
+            'nik' => "3175052302000007",
+            'namaLengkap' => "Pashadidan Fadhillah",
+            'alamat' => "Rawamangun",
+            'noTelp' => "081282653993",
             'gender' => "Pria",
             'password' => bcrypt('123456'),
             'token' => null,
@@ -48,8 +70,14 @@ class DataSeeder extends Seeder
         ));
 
         $admin3 = Admin::create(array(
-            'name' => "japran",
-            'email' => "japran@test.com",
+            'name' => "zhafran",
+            'email' => "zhafran@test.com",
+            'password' => bcrypt('123456'),
+        ));
+
+        $admin4 = Admin::create(array(
+            'name' => "pashadidan",
+            'email' => "pashadidan@test.com",
             'password' => bcrypt('123456'),
         ));
 
@@ -186,7 +214,7 @@ class DataSeeder extends Seeder
         ));
 
         $pengaduan5 = Pengaduan::create(array(
-            'user_id' => $user1->id,
+            'user_id' => $user2->id,
             'nama' => "lukman",
             'jenisKelamin' => "pria",
             'tanggalLahir' => new \DateTime,
@@ -219,7 +247,7 @@ class DataSeeder extends Seeder
         ));
 
         $pengaduan6 = Pengaduan::create(array(
-            'user_id' => $user1->id,
+            'user_id' => $user2->id,
             'nama' => "farid",
             'jenisKelamin' => "pria",
             'tanggalLahir' => new \DateTime,
@@ -252,7 +280,7 @@ class DataSeeder extends Seeder
         ));
 
         $pengaduan7 = Pengaduan::create(array(
-            'user_id' => $user1->id,
+            'user_id' => $user2->id,
             'nama' => "farhan",
             'jenisKelamin' => "wanita",
             'tanggalLahir' => new \DateTime,
@@ -285,7 +313,7 @@ class DataSeeder extends Seeder
         ));
 
         $pengaduan8 = Pengaduan::create(array(
-            'user_id' => $user1->id,
+            'user_id' => $user2->id,
             'nama' => "nanda",
             'jenisKelamin' => "wanita",
             'tanggalLahir' => new \DateTime,
@@ -318,7 +346,7 @@ class DataSeeder extends Seeder
         ));
 
         $pengaduan9 = Pengaduan::create(array(
-            'user_id' => $user1->id,
+            'user_id' => $user3->id,
             'nama' => "nisa",
             'jenisKelamin' => "wanita",
             'tanggalLahir' => new \DateTime,
@@ -351,7 +379,7 @@ class DataSeeder extends Seeder
         ));
 
         $pengaduan10 = Pengaduan::create(array(
-            'user_id' => $user1->id,
+            'user_id' => $user3->id,
             'nama' => "dinda",
             'jenisKelamin' => "wanita",
             'tanggalLahir' => new \DateTime,
@@ -384,7 +412,7 @@ class DataSeeder extends Seeder
         ));
 
         $pengaduan11 = Pengaduan::create(array(
-            'user_id' => $user1->id,
+            'user_id' => $user3->id,
             'nama' => "irsadad",
             'jenisKelamin' => "pria",
             'tanggalLahir' => new \DateTime,

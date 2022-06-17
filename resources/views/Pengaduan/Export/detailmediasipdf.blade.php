@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="form-group">
-        <h2 style="margin-bottom: 50px;">Laporan Pengaduan</h2>
+        <h2 style="margin-bottom: 50px;">Laporan Pengaduan (Mediasi)</h2>
 
         <table class="static" rules="all" border="1px" style="width: 100%;">
             <thead>
@@ -23,6 +23,8 @@
                     <th>ID Pengaduan</th>
                     <th>ID User</th>
                     <th>Status Pengaduan</th>
+                    <th>Tanggal Dibuat Mediasi</th>
+                    <th>Id Admin Pemediasi</th>
                     <th>Tanggal Mediasi</th>
                     <th>Tempat Mediasi</th>
                 </tr>
@@ -33,6 +35,8 @@
                     <td>{{ $dme->pengaduan->id }}</td>
                     <td>{{ $dme->pengaduan->user_id }}</td>
                     <td>{{ $dme->statusPengaduan }}</td>
+                    <td>{{ date('d-m-Y', strtotime($dme->updated_at)) }}</td>
+                    <td>{{ $dme->admin_id }}</td>
                     <td>{{ date('d-m-Y', strtotime($dme->tanggalMediasi)) }}</td>
                     <td>{{ $dme->tempatMediasi }}</td>
                 </tr>

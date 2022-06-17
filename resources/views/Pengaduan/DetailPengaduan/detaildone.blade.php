@@ -2,7 +2,7 @@
 
 @section('container')
 
-<h2 class="mt-5">Detail Pengaduan</h2>
+<h2 class="mt-5">Detail Pengaduan (Selesai)</h2>
 
 <a href="{{ url('doneexportpdf', $ddo->id) }}" style="float:right" class="btn btn-danger mb-3"><i class="bi bi-file-earmark-spreadsheet-fill"></i> Download Data (.PDF)</a>
 
@@ -32,13 +32,15 @@
 <table class="table table-bordered mt-5">
     <thead class="table-success">
         <tr>
-            <th>Tanggal Report</th>
+            <th>Id Admin Pereport</th>
+            <th>Tanggal Dibuat Report</th>
             <th>Report</th>
         </tr>
     </thead>
     <tbody class="atable">
         
         <tr>
+            <td>{{ $ddo->admin_id }}</td>
             <td>{{ date('d-m-Y H:i:s', strtotime($ddo->updated_at)) }}</td>
             <td>{{ $ddo->reportMediasi }}</td>
         </tr>
@@ -46,7 +48,9 @@
     </tbody>
 </table>
 
-<table class="table table-bordered mt-5">
+<h3 class="mt-5 mb-3">I. IDENTITAS KONSUMEN</h3>
+
+<table class="table table-bordered">
     <thead class="table-success">
         <tr>
             <th>Nama</th>
@@ -79,7 +83,9 @@
     </tbody>
 </table>
 
-<table class="table table-bordered mt-5">
+<h3 class="mt-5 mb-3">II. IDENTITAS PELAKU USAHA</h3>
+
+<table class="table table-bordered">
     <thead class="table-success">
         <tr>
             <th>Alamat Lengkap Tempat Memperoleh Barang dan Jasa</th>
@@ -102,7 +108,10 @@
     </tbody>
 </table>
 
-<table class="table table-bordered mt-5">
+<h3 class="mt-5 mb-3">III. TENTANG PENGADUAN</h3>
+<h4>Barang / Jasa yang diadukan</h4>
+
+<table class="table table-bordered">
     <thead class="table-success align-middle">
         <tr>
             <th>Jenis Produk</th>
@@ -184,8 +193,9 @@
     </tbody>
 </table>
 
+<h3 class="mt-5 mb-3">IV. JENIS TUNTUTAN</h3>
 
-<table class="table table-bordered mt-5">
+<table class="table table-bordered">
     <thead class="table-success">
         <tr>
             <th>Jenis Tuntutan</th>
@@ -200,7 +210,9 @@
     </tbody>
 </table>
 
-<table class="table table-bordered mt-5">
+<h3 class="mt-5 mb-3">V. KRONOLOGIS PENGADUAN</h3>
+
+<table class="table table-bordered">
     <thead class="table-success">
         <tr>
             <th>Kronologis Pengaduan</th>
