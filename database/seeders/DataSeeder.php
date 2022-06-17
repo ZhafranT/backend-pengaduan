@@ -544,7 +544,7 @@ class DataSeeder extends Seeder
         ));
 
         $berita1 = Berita::create(array(
-            'admin_id' => 1,
+            'admin_id' =>  $admin2->id,
             'judulBerita' => "Kemendag Catat Pengaduan Konsumen Didominasi E-commerce pada 2021",
             'photo' => "asset/berita1.jpg",
             'isiBerita' => "JAKARTA, KOMPAS.com - Direktur Jenderal Perlindungan Konsumen dan Tertib Niaga(PKTN) Veri Anggrijono mengatakan, 
@@ -571,7 +571,7 @@ class DataSeeder extends Seeder
         ));
 
         $berita2 = Berita::create(array(
-            'admin_id' => 2,
+            'admin_id' =>  $admin3->id,
             'judulBerita' => "Ini Masalah yang Paling Banyak Diadukan Konsumen ke Kemendag",
             'photo' => "asset/berita2.jpg",
             'isiBerita' => "JAKARTA, KOMPAS.com - Direktur Jenderal Perlindungan Konsumen dan Tertib Niaga(PKTN) Veri Anggrijono mengatakan, 
@@ -598,7 +598,7 @@ class DataSeeder extends Seeder
         ));
     
         $berita3 = Berita::create(array(
-            'admin_id' => 3,
+            'admin_id' =>  $admin4->id,
             'judulBerita' => "Pengaduan Konsumen E-Commerce dan Jasa Keuangan Melonjak Sepanjang 2020",
             'photo' => "asset/berita3.jpg",
             'isiBerita' => "JAKARTA, KOMPAS.com - Direktur Jenderal Perlindungan Konsumen dan Tertib Niaga(PKTN) Veri Anggrijono mengatakan, 
@@ -625,7 +625,7 @@ class DataSeeder extends Seeder
         ));
 
         $uupk1 = Uupk::create(array(
-            'admin_id' => 1,
+            'admin_id' =>  $admin1->id,
             'nomorUU' => "8 TAHUN 1999",
             'bab' => "1",
             'judulBab' => "KETENTUAN UMUM",
@@ -676,7 +676,7 @@ class DataSeeder extends Seeder
         ));
 
         $uupk2 = Uupk::create(array(
-            'admin_id' => 1,
+            'admin_id' =>  $admin1->id,
             'nomorUU' => "8 TAHUN 1999",
             'bab' => "2",
             'judulBab' => "ASAS DAN TUJUAN",
@@ -685,7 +685,7 @@ class DataSeeder extends Seeder
         ));
 
         $uupk3 = Uupk::create(array(
-            'admin_id' => 1,
+            'admin_id' =>  $admin1->id,
             'nomorUU' => "8 TAHUN 1999",
             'bab' => "2",
             'judulBab' => "ASAS DAN TUJUAN",
@@ -700,7 +700,7 @@ class DataSeeder extends Seeder
         ));
 
         $uupk4 = Uupk::create(array(
-            'admin_id' => 1,
+            'admin_id' =>  $admin1->id,
             'nomorUU' => "8 TAHUN 1999",
             'bab' => "2",
             'judulBab' => "ASAS DAN TUJUAN",
@@ -718,7 +718,7 @@ class DataSeeder extends Seeder
         ));
 
         $uupk5 = Uupk::create(array(
-            'admin_id' => 1,
+            'admin_id' =>  $admin1->id,
             'nomorUU' => "8 TAHUN 1999",
             'bab' => "2",
             'judulBab' => "ASAS DAN TUJUAN",
