@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nik')->unique();
             $table->string('namaLengkap'); 
             $table->string('alamat');
-            $table->string('noTelp');
+            $table->string('noTelp')->unique();
             $table->string('gender');
             $table->string('password');
             $table->longText('token')->nullable();

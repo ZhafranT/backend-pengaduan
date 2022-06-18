@@ -88,7 +88,7 @@ class DataSeeder extends Seeder
             'nama' => "febio",
             'jenisKelamin' => "pria",
             'tanggalLahir' => new \DateTime,
-            'noIdentitas' => "3472834623843",
+            'noIdentitas' => "3175052302000009",
             'telepon' => "082137437482",
             'email' => "apaaja@mail.com",
             'alamat' => "jl. jalan 123",
@@ -316,7 +316,7 @@ class DataSeeder extends Seeder
 
         $pengaduan8 = Pengaduan::create(array(
             'user_id' => $user2->id,
-            'nama' => "nanda",
+            'nama' => "arah",
             'jenisKelamin' => "wanita",
             'tanggalLahir' => new \DateTime,
             'noIdentitas' => "3472834623843",
@@ -349,7 +349,7 @@ class DataSeeder extends Seeder
 
         $pengaduan9 = Pengaduan::create(array(
             'user_id' => $user3->id,
-            'nama' => "nisa",
+            'nama' => "tifanto",
             'jenisKelamin' => "wanita",
             'tanggalLahir' => new \DateTime,
             'noIdentitas' => "3472834623843",
@@ -382,7 +382,7 @@ class DataSeeder extends Seeder
 
         $pengaduan10 = Pengaduan::create(array(
             'user_id' => $user3->id,
-            'nama' => "dinda",
+            'nama' => "jabry",
             'jenisKelamin' => "wanita",
             'tanggalLahir' => new \DateTime,
             'noIdentitas' => "3472834623843",

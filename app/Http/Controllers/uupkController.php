@@ -43,8 +43,8 @@ class uupkController extends Controller
      */
     public function store(Request $request)
     {
-
         try {
+
             $validatedData = $request->validate([
                 'nomorUU' => 'required',
                 'bab' => 'required',
@@ -56,6 +56,9 @@ class uupkController extends Controller
             $validatedData['admin_id'] = auth()->user()->id;
     
             Uupk::create($validatedData);
+
+            return redirect('uupk')->with('success', 'UU Berhasil Diupload!');
+
         } catch (\Throwable $th) {
             // dd($th);
             $message = $th->getMessage();
@@ -63,8 +66,6 @@ class uupkController extends Controller
                 "title" => "Input UUPK"
             ], compact('message'));
         }
-
-        return redirect('uupk')->with('success', 'UU Berhasil Diupload!');
     }
 
     /**
@@ -121,6 +122,7 @@ class uupkController extends Controller
                 ->update($validatedData);
 
             return redirect('uupk')->with('success', 'UU Berhasil Diubah!');
+            
         } catch (\Throwable $th) {
             $message = $th->getMessage();
             return view('Uupk.edituupk', [

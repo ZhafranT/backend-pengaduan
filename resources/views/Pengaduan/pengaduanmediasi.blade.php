@@ -3,7 +3,7 @@
 @section('container')
 
 @include('partials.pengaduannav')
-
+@php ($errmsg = empty($message) ? '' : $message)
 <div class="pengaduan-pelanggan">
 
     <h2 class="mt-5">Mediasi Pengaduan</h2>
@@ -55,9 +55,11 @@
 
                                                     <div class="mt-4 mb-3">
                                                         <label for="exampleFormControlTextarea1" class="form-title form-label">Ulasan:</label>
-                                                        <textarea class="form-control" name="mediasireport" id="exampleFormControlTextarea1" rows="8"></textarea>
+                                                        <textarea class="form-control" name="reportMediasi" id="exampleFormControlTextarea1" rows="8"></textarea>
                                                     </div>
-
+                                                    <div class="mb-3" style="color: red">
+                                                        {{ $errmsg }}
+                                                    </div>
                                                     <div class="mb-3 d-flex justify-content-center">
                                                         <input class="btn btn-success" type="submit" value="Submit" onclick="return togglesendparam();">
                                                     </div>
@@ -87,4 +89,5 @@
         });
     </script>
 </div>
+@include('sweetalert::alert')
 @endsection

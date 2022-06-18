@@ -70,71 +70,80 @@ class pengaduanController extends Controller
     public function updateProcess($id)
     {
         try {
+
             $fuu = ResponPengaduan::findorfail($id);
             $fuu->update([
                 'statusPengaduan' => 'process',
                 'admin_id' => auth()->id(),
             ]);
 
-            // $id1 = (string)$id;
-            // DB::table('respon_pengaduans')
-            // ->where('pengaduan_id', $id1)
-            // ->update([
-            //     'statusPengaduan' => 'process',
-            //     'admin_id' => auth()->id(),
-            // ]);
+            return back()->with('success', 'Data Berhasil Diproses!');
+
         } catch (\Throwable $th) {
             dd($th);
         }
-        return back()->with('success', 'Data Berhasil Diproses!');
     }
 
     public function updateMediasi(Request $request, $id)
     {
         try {
-            // $foo = ResponPengaduan::findorfail($id);
-            // $foo->update([
-            //     'statusPengaduan' => 'mediasi',
-            //     'tanggalMediasi'=> $request->mediasitanggal,
-            //     'tempatMediasi' => $request->mediasitempat,
-            //     'admin_id' => auth()->id(),
-            // ]);
+
+            $rules = [
+                'tanggalMediasi' => 'required',
+                'tempatMediasi' => 'required',
+            ];
+
+            $validatedData = $request->validate($rules);
+
+            $validatedData['admin_id'] = auth()->user()->id;
+
             $id2 = (string)$id;
             DB::table('respon_pengaduans')
             ->where('pengaduan_id', $id2)
             ->update([
                 'statusPengaduan' => 'mediasi',
-                'tanggalMediasi'=> $request->mediasitanggal,
-                'tempatMediasi' => $request->mediasitempat,
-                'admin_id' => auth()->id(),
+                'tanggalMediasi'=> $validatedData['tanggalMediasi'],
+                'tempatMediasi' => $validatedData['tempatMediasi'],
+                'admin_id' => $validatedData['admin_id'],
             ]);
+
+            return back()->with('success', 'Data Berhasil Diproses!');
+
         } catch (\Throwable $th) {
             dd($th);
+            $message = $th->getMessage();
+            return back(compact('message'));
         }
-        return back()->with('success', 'Data Berhasil Diproses!');
     }
 
     public function updateReport(Request $request, $id)
     {
         try {
-            // $fww = ResponPengaduan::findorfail($id);
-            // $fww->update([
-            //     'statusPengaduan' => 'done',
-            //     'reportMediasi'=> $request->mediasireport,
-            //     'admin_id' => auth()->id(),
-            // ]);
+
+            $rules = [
+                'reportMediasi' => 'required',
+            ];
+
+            $validatedData = $request->validate($rules);
+
+            $validatedData['admin_id'] = auth()->user()->id;
+
             $id3 = (string)$id;
             DB::table('respon_pengaduans')
             ->where('pengaduan_id', $id3)
             ->update([
                 'statusPengaduan' => 'done',
-                'reportMediasi'=> $request->mediasireport,
-                'admin_id' => auth()->id(),
+                'reportMediasi'=>$validatedData['reportMediasi'],
+                'admin_id' => $validatedData['admin_id'],
             ]);
+
+            return back()->with('success', 'Data Berhasil Diproses!');
+            
         } catch (\Throwable $th) {
             dd($th);
+            $message = $th->getMessage();
+            return back(compact('message'));
         }
-        return back()->with('success', 'Data Berhasil Diproses!');
     }
 
     public function unresolvedDetail($id)

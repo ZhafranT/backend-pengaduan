@@ -3,7 +3,7 @@
 @section('container')
 
 @include('partials.pengaduannav')
-
+@php ($errmsg = empty($message) ? '' : $message)
 <div class="pengaduan-pelanggan">
 
     <h2 class="mt-5">Pengaduan Diproses</h2>
@@ -53,18 +53,20 @@
                                                         <label for="exampleFormControlInput1" class="form-title form-label">Tanggal</label>
                                                     </div>
                                                     <div class="date"> 
-                                                        <input type="date" name="mediasitanggal"> 
+                                                        <input type="date" name="tanggalMediasi"> 
                                                     </div>
 
                                                     <div class="mb-3">
                                                         <label for="exampleFormControlInput1" class="form-title form-label">Tempat:</label>
-                                                        <select class="form-select" name="mediasitempat" aria-label="Default select example">
-                                                            <option selected>Pilih Tempat</option>
+                                                        <select class="form-select" name="tempatMediasi" aria-label="Default select example">
+                                                            {{-- <option>Pilih Tempat</option> --}}
                                                             <option value="Offline / Kantor Kemendag">Offline / Kantor Kemendag</option>
                                                             <option value="Online / Virtual Meeting">Online / Virtual Meeting</option>
                                                         </select>
                                                     </div>
-
+                                                    <div class="mb-3" style="color: red">
+                                                        {{ $errmsg }}
+                                                    </div>
                                                     <div class="mb-3 d-flex justify-content-center">
                                                         <input class="btn btn-primary" type="submit" value="Submit" onclick="return togglesendparam();">
                                                     </div>
@@ -93,4 +95,5 @@
         });
     </script>
 </div>
+@include('sweetalert::alert')
 @endsection

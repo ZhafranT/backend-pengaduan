@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreign('admin_id')
               ->references('id')->on('admins');
             $table->string('judulBerita');
-            // $table->string('image')->nullable();
             $table->timestamps();
         });
         DB::statement("ALTER TABLE beritas ADD photo MEDIUMBLOB");
