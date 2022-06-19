@@ -10,7 +10,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
-
+use DB;
 
 class userController extends Controller
 {
@@ -29,13 +29,17 @@ class userController extends Controller
             $updateToken = User::where('email', $request->email)
             ->update([
             'token' => $token
-         ]);
-         
+            ]);
+            
+            // sekarang ini feb user id ini taro di response juga feb
+            $userdataid = User::select('id')
+            ->where('email', '=', $request->email)
+            ->get();
+            
+            return response()->json(compact('token','userdataid'));
         } catch (JWTException $e) {
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
-
-        return response()->json(compact('token'));
     }
 
     public function register(Request $request)
