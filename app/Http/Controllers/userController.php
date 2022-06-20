@@ -10,6 +10,7 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
+use App\Helper\ApiFormatter;
 use DB;
 
 class userController extends Controller
@@ -31,7 +32,6 @@ class userController extends Controller
             'token' => $token
             ]);
             
-            // sekarang ini feb user id ini taro di response juga feb
             $userdataid = User::select('id')
             ->where('email', '=', $request->email)
             ->get();
@@ -140,5 +140,23 @@ class userController extends Controller
         }
 
         return response()->json(compact('user'));
+    }
+
+    public function profileAPI(Request $request)
+    {
+        try {
+            $data = User::where('id', '=', $request->user_id)->get([
+                "email",
+                "nik",
+                "namaLengkap",
+                "alamat",
+                "noTelp",
+                "gender"
+            ]);
+
+            return ApiFormatter::createApi(200, 'Success', $data);
+        } catch (\Throwable $th) {
+            return ApiFormatter::createApi(500, 'Internal Server Error',$th->getMessage());
+        }
     }
 }

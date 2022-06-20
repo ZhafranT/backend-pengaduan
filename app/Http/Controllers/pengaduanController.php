@@ -253,10 +253,17 @@ class pengaduanController extends Controller
         }
     }
 
-    public function responpengaduanAPI()
+    public function pengaduanAPI(Request $request)
     {
         try {
-            $data = ResponPengaduan::all();
+            $data = Pengaduan::with(['responPengaduan'])
+            ->where('user_id', '=', $request->user_id)
+            ->get();
+
+            // select * from pengaduans p
+            // left join respon_pengaduans rp
+            // on p.id = rp.pengaduan_id where p.user_id = $credentials
+
             return ApiFormatter::createApi(200, 'Success', $data);
         } catch (\Throwable $th) {
             return ApiFormatter::createApi(500, 'Internal Server Error',$th->getMessage());
