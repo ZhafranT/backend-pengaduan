@@ -152,7 +152,7 @@ aside .top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 0.4rem;
+    padding-top: 1.3rem;
 }
 
 aside .logo {
@@ -303,7 +303,6 @@ main .insights {
     font-size: 1rem;
     justify-content: center;
     align-items: center;
-    margin-left: -5px;
 }
 
 main .insights > div {
@@ -332,8 +331,7 @@ main .insights > div .number {
 }
 
 .textoverview {
-    margin-top: -15px;
-    margin-bottom: -5px;
+    margin-bottom: -3px;
 }
 
 .wrap {
@@ -351,6 +349,8 @@ main .wrap a {
     bottom: 0;
     right: 0;
     transform: translate(-15%, 95%);
+    justify-content: center;
+    align-items: center;
 }
 
 .pengaduan-unresolved {
@@ -397,7 +397,7 @@ main .wrap a {
 
 /* TABLE */
 main .pengaduan-pelanggan {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
 }
 
 main .pengaduan-pelanggan h2 {

@@ -1,20 +1,21 @@
-<h2 class="textoverview">Overview</h2>
-<div class="insights">
-    <div class="wrap {{ ($title === "Pengaduan Unresolved") ? 'pengaduan-active' : '' }}">
-        <a href="/pengaduanunresolved">
-            <div class="pengaduan-unresolved ">
-                <div class="middle">
-                    <div class="center">
-                        
-                        <h3 class="text-muted">Unresolved</h3>
-                        
-                        <div class="number">
-                            <h1>{{$dtcount_unresolve}}</h1>
+<div class="navbar-pengaduan">
+    <h2 class="textoverview">Overview</h2>
+    <div class="insights">
+        <div class="wrap {{ ($title === "Pengaduan Unresolved") ? 'pengaduan-active' : '' }}">
+            <a href="/pengaduanunresolved">
+                <div class="pengaduan-unresolved ">
+                    <div class="middle">
+                        <div class="center">
+                            
+                            <h3 class="text-muted">Unresolved</h3>
+                            
+                            <div class="number">
+                                <h1>{{$dtcount_unresolve}}</h1>
+                            </div>
+                            
                         </div>
-
                     </div>
                 </div>
-            </div>
         </a>
     </div>
     
@@ -24,19 +25,19 @@
             <div class="pengaduan-process">
                 <div class="middle">
                     <div class="center">
-
+                        
                         <h3 class="text-muted">Process</h3>
                         
                         <div class="number">
                             <h1>{{$dtcount_process}}</h1>
                         </div>
-
+                        
                     </div>
                 </div>
             </div>
         </a>
     </div>
-
+    
     {{-- END OF PROCESS --}}
     <div class="wrap {{ ($title === "Pengaduan Mediasi") ? 'pengaduan-active' : '' }}">
         <a href="/pengaduanmediasi">
@@ -49,26 +50,26 @@
                         <div class="number">
                             <h1>{{$dtcount_mediasi}}</h1>
                         </div>
-
+                        
                     </div>
                 </div>
             </div>
         </a>
     </div>
-
+    
     {{-- END OF MEDIASI --}}
     <div class="wrap {{ ($title === "Pengaduan Done") ? 'pengaduan-active' : '' }}">
         <a href="/pengaduandone">
             <div class="pengaduan-done">
                 <div class="middle">
                     <div class="center">
-
+                        
                         <h3 class="text-muted">Done</h3>
                         
                         <div class="number">
                             <h1>{{$dtcount_done}}</h1>
                         </div>
-
+                        
                     </div>
                 </div>
             </div>
@@ -78,3 +79,4 @@
     
 </div>
 {{-- END OF INSIGHTS --}}
+</div>
