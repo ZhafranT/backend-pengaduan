@@ -41,6 +41,10 @@
 
 html {
     font-size: 14px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
 }
 
 body {
@@ -50,7 +54,6 @@ body {
     font-size: 0.88rem;
     background: var(--color-background);
     user-select: none;
-    overflow-x: hidden;
 }
 
 .containers {
@@ -273,7 +276,7 @@ main {
     position: absolute;
     left: 15rem;
     top: 0;
-    width: 100%;
+    width: 85%;
     height: 100%;
     background: var(--color-info-light);
 }
@@ -282,7 +285,8 @@ main .insights {
     width: 60rem;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.6rem;
+    gap: 1.2rem;
+    font-size: 1rem;
 }
 
 main .insights > div {
@@ -310,9 +314,9 @@ main .insights > div .number {
     justify-content: center;
 }
 
-main .insights {
-    margin: 1rem 0 0.6rem;
-    font-size: 1rem;
+.textoverview {
+    margin-top: -15px;
+    margin-bottom: -5px;
 }
 
 .wrap {
@@ -376,7 +380,7 @@ main .wrap a {
 
 /* TABLE */
 main .pengaduan-pelanggan {
-    margin-top: 2rem;
+    margin-top: 0.5rem;
 }
 
 main .pengaduan-pelanggan h2 {

@@ -1,4 +1,4 @@
-<h2>Overview</h2>
+<h2 class="textoverview">Overview</h2>
 <div class="insights">
     <div class="wrap {{ ($title === "Pengaduan Unresolved") ? 'pengaduan-active' : '' }}">
         <a href="/pengaduanunresolved">

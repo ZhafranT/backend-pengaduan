@@ -11,9 +11,9 @@
 
 <div class="pengaduan-pelanggan">
 
-    <h2 class="mt-5 mb-3">Pengaduan Masuk</h2>
+    <h2>Pengaduan Masuk</h2>
 
-    <a href="/exportpengaduan" style="float:right" class="btn btn-success mb-3"><i class="bi bi-file-earmark-spreadsheet-fill"></i> Download data rekap masuk (.xlsx)</a>
+    <a href="/exportpengaduan" style="float:right" class="btn btn-success"><i class="bi bi-file-earmark-spreadsheet-fill"></i> Download data rekap masuk (.xlsx)</a>
     {{-- <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-file-earmark-spreadsheet-fill"></i> Import Data (.xlsx)</a> --}}
     <br><br><br>
     <table id="example" class="table table-striped table-bordered" style="width:100%">
