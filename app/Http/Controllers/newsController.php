@@ -46,7 +46,7 @@ class newsController extends Controller
         try {
 
             $validatedData = $request->validate([
-                'judulBerita' => 'required|max:50',
+                'judulBerita' => 'required',
                 'photo' => 'required|image|file|max:1024',
                 'isiBerita' => 'required'
             ]);
@@ -117,7 +117,7 @@ class newsController extends Controller
             $ber = Berita::findorfail($id);
         
             $rules = [
-                'judulBerita' => 'required|max:50',
+                'judulBerita' => 'required',
                 'photo' => 'image|file|max:1024',
                 'isiBerita' => 'required'
             ];
