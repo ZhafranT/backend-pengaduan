@@ -265,8 +265,8 @@ class pengaduanController extends Controller
                 'jenisTuntutan' => 'required',
                 'kronologisPengaduan' => 'required',
             ]);
-            // $validatedData['user_id'] = auth()->user()->id;
-            $transaction = Pengaduan::create(['user_id' => auth()->id(), $validatedData]);
+            $validatedData['user_id'] = nullable();
+            $transaction = Pengaduan::create($validatedData);
             ResponPengaduan::create([
                 'pengaduan_id' => $transaction->id,
                 'statusPengaduan' => "unresolved",
