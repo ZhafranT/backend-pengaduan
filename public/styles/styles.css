@@ -617,8 +617,8 @@ main .btn-edit-uupk:hover {
 
 .popup .contents {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 320px;
+    left: 40%;
     transform: translate(-50%, -50%) scale(0);
     background: var(--color-background);
     width: 700px;
