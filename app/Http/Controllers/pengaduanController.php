@@ -234,7 +234,39 @@ class pengaduanController extends Controller
     {
         try {
             DB::beginTransaction();
-            $transaction = Pengaduan::create($request->all());
+            $validatedData = $request->validate([
+                'nama' => 'required',
+                'jenisKelamin' => 'required',
+                'tanggalLahir' => 'required',
+                'noIdentitas' => 'required',
+                'telepon' => 'required',
+                'email' => 'required',
+                'alamat' => 'required',
+                'provinsi' => 'required',
+                'kotaKabupaten' => 'required',
+                'kodePos' => 'required',
+                'alamatTempatBarangJasa' => 'required',
+                'teleponPelakuUsaha' => 'required',
+                'provinsiPelakuUsaha' => 'required',
+                'kotaKabupatenPelakuUsaha' => 'required',
+                'kodePosPelakuUsaha' => 'required',
+                'jenisProduk' => 'required',
+                'detailProduk' => 'required',
+                'merkDagang' => 'required',
+                'type' => 'required',
+                'jenisPengaduan' => 'required',
+                'waktuKejadianDitemukan' => 'required',
+                'tempatLokasiKejadian' => 'required',
+                'buktiPembelian' => 'required',
+                'saksi' => 'required',
+                'kerugianMaterial' => 'required',
+                'kerugianFisik' => 'required',
+                'kerugianPsikis' => 'required',
+                'jenisTuntutan' => 'required',
+                'kronologisPengaduan' => 'required',
+            ]);
+            $validatedData['user_id'] = auth()->user()->id;
+            $transaction = Pengaduan::create($validatedData);
             ResponPengaduan::create([
                 'pengaduan_id' => $transaction->id,
                 'statusPengaduan' => "unresolved",
