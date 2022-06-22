@@ -10,9 +10,10 @@ class statisticController extends Controller
 {
     public function index(){
         
-        $total_pengaduan = Pengaduan::select(DB::raw("COUNT(*) as total_pengaduan"))
+        $pengaduanData = Pengaduan::select(DB::raw("COUNT(*) as count"))
+        ->whereYear("created_at",date('Y'))
         ->GroupBy(DB::raw("Month(created_at)"))
-        ->pluck('total_pengaduan');
+        ->pluck('count');
 
         $bulan = Pengaduan::select(DB::raw("MONTHNAME(created_at) as bulan"))
         ->GroupBy(DB::raw("MONTHNAME(created_at)"))
@@ -20,6 +21,6 @@ class statisticController extends Controller
         
         return view('statistic.statistic', [
             "title" => "Statistik"
-        ], compact('total_pengaduan','bulan'));
+        ], compact('pengaduanData','bulan'));
     }
 }
