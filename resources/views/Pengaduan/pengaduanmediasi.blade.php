@@ -34,7 +34,7 @@
                 <td>{{ $item->pengaduan->merkDagang }}</td>
                 <td>{{ $item->pengaduan->type }}</td>
                 <td>{{ $item->pengaduan->jenisPengaduan }}</td>
-                <td>{{ $item->tanggalMediasi }}</td>
+                <td>{{ date('d-m-Y', strtotime($item->tanggalMediasi)) }}</td>
                 <td>{{ $item->tempatMediasi }}</td>
                 <td>{{ $item->statusPengaduan }}</td>
                 <td><a href="{{ url('detailpengaduanmediasi', $item->id) }}"><span class="material-icons-sharp">find_in_page</span></a></td>
@@ -61,7 +61,7 @@
                                                         {{ $errmsg }}
                                                     </div>
                                                     <div class="mb-3 d-flex justify-content-center">
-                                                        <input class="btn btn-success" type="submit" value="Submit" onclick="return togglesendparam();">
+                                                        <input class="btn btn-success" type="submit" value="Submit" onclick="return togglesendparam2();">
                                                     </div>
 
                                                 </form>

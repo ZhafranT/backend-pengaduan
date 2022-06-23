@@ -32,7 +32,7 @@
                 <td>{{ $item->pengaduan->merkDagang }}</td>
                 <td>{{ $item->pengaduan->type }}</td>
                 <td>{{ $item->pengaduan->jenisPengaduan }}</td>
-                <td>{{ $item->updated_at }}</td>
+                <td>{{ date('d-m-Y H:i:s', strtotime($item->updated_at)) }}</td>
                 <td>{{ $item->statusPengaduan }}</td>
                 <td><a href="{{ url('detailpengaduandone', $item->id) }}"><span class="material-icons-sharp">find_in_page</span></a></td>
             </tr>

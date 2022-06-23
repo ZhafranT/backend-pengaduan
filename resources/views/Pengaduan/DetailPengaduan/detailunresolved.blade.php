@@ -141,7 +141,7 @@
     <tbody class="atable">
         
         <tr>
-            <td><img src="{{URL::asset($dun->pengaduan->buktiPembelian)}}" alt="-" style="width: 50%;"></td>
+            <td><img src="{{ $dun->pengaduan->buktiPembelian }}" alt="-" style="width: 50%;"></td>
             {{-- <td><img src="{{ $dpr->pengaduan->buktiPembelian }}" alt=""></td> --}}
             <td>{{ $dun->pengaduan->saksi}}</td>
         </tr>
