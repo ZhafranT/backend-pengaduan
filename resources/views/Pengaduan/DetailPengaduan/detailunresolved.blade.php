@@ -142,7 +142,9 @@
         
         <tr>
             {{-- <td><img src="{{ $dun->pengaduan->buktiPembelian }}" alt="-" style="width: 50%;"></td> --}}
-            <td><img src="{{ asset('storage/app/' . $dun->pengaduan->buktiPembelian) }}" alt="-" style="width: 50%;"></td>
+            {{-- <td><img src="{{ asset('storage/' . $dun->pengaduan->buktiPembelian) }}" alt="-" style="width: 50%;"></td> --}}
+            {{-- <td><img src="{{ Storage::url("/storage/{$dun->pengaduan->buktiPembelian}") }}" alt="-" style="width: 50%;"/></td> --}}
+            <td><img src="{{ asset('storage/'.$dun->pengaduan->buktiPembelian) }}" style="width: 50%;" alt="-"></td>
             <td>{{ $dun->pengaduan->saksi}}</td>
         </tr>
         
