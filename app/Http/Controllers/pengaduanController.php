@@ -269,8 +269,43 @@ class pengaduanController extends Controller
                 'jenisTuntutan' => 'required',
                 'kronologisPengaduan' => 'required',
             ]);
-            // $validatedData['user_id'] = Auth::guard('user')->id();
-            $transaction = Pengaduan::create($validatedData);
+            
+            $type = $request->file('buktiPembelian')->extension();
+            $imagedata = file_get_contents($request->file('buktiPembelian'));
+            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($imagedata);
+
+            $transaction = Pengaduan::create([
+                'user_id' => $validatedData['user_id'],
+                'nama' => $validatedData['nama'],
+                'jenisKelamin' => $validatedData['jenisKelamin'],
+                'tanggalLahir' => $validatedData['tanggalLahir'],
+                'noIdentitas' => $validatedData['noIdentitas'],
+                'telepon' => $validatedData['telepon'],
+                'email' => $validatedData['email'],
+                'alamat' => $validatedData['alamat'],
+                'provinsi' => $validatedData['provinsi'],
+                'kotaKabupaten' => $validatedData['kotaKabupaten'],
+                'kodePos' => $validatedData['kodePos'],
+                'alamatTempatBarangJasa' => $validatedData['alamatTempatBarangJasa'],
+                'teleponPelakuUsaha' => $validatedData['teleponPelakuUsaha'],
+                'provinsiPelakuUsaha' => $validatedData['provinsiPelakuUsaha'],
+                'kotaKabupatenPelakuUsaha' => $validatedData['kotaKabupatenPelakuUsaha'],
+                'kodePosPelakuUsaha' => $validatedData['kodePosPelakuUsaha'],
+                'jenisProduk' => $validatedData['jenisProduk'],
+                'detailProduk' => $validatedData['detailProduk'],
+                'merkDagang' => $validatedData['merkDagang'],
+                'type' => $validatedData['type'],
+                'jenisPengaduan' => $validatedData['jenisPengaduan'],
+                'waktuKejadianDitemukan' => $validatedData['waktuKejadianDitemukan'],
+                'tempatLokasiKejadian' => $validatedData['tempatLokasiKejadian'],
+                'buktiPembelian' => $base64,
+                'saksi' => $validatedData['saksi'],
+                'kerugianMaterial' => $validatedData['kerugianMaterial'],
+                'kerugianFisik' => $validatedData['kerugianFisik'],
+                'kerugianPsikis' => $validatedData['kerugianPsikis'],
+                'jenisTuntutan' => $validatedData['jenisTuntutan'],
+                'kronologisPengaduan' => $validatedData['kronologisPengaduan'],
+            ]);
             ResponPengaduan::create([
                 'pengaduan_id' => $transaction->id,
                 'statusPengaduan' => "unresolved",
