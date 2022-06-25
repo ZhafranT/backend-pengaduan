@@ -40,7 +40,6 @@
         }
     },
     "scripts": {
-        "post-install-cmd": [ "ln -sr storage/ public/storage" ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
