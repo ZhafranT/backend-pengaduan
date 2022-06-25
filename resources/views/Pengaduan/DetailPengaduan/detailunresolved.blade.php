@@ -142,7 +142,7 @@
         
         <tr>
             {{-- <td><img src="{{ $dun->pengaduan->buktiPembelian }}" alt="-" style="width: 50%;"></td> --}}
-            <td><img src="{{ asset('storage/' . $dun->pengaduan->buktiPembelian) }}" alt="-" style="width: 50%;"></td>
+            <td><img src="{{ asset('storage/app/' . $dun->pengaduan->buktiPembelian) }}" alt="-" style="width: 50%;"></td>
             <td>{{ $dun->pengaduan->saksi}}</td>
         </tr>
         
