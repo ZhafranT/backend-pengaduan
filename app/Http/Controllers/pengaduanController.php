@@ -238,6 +238,7 @@ class pengaduanController extends Controller
         try {
             DB::beginTransaction();
             $validatedData = $request->validate([
+                'user_id' => 'required',
                 'nama' => 'required',
                 'jenisKelamin' => 'required',
                 'tanggalLahir' => 'required',
@@ -268,7 +269,7 @@ class pengaduanController extends Controller
                 'jenisTuntutan' => 'required',
                 'kronologisPengaduan' => 'required',
             ]);
-            $validatedData['user_id'] = Auth::guard('user')->id();
+            // $validatedData['user_id'] = Auth::guard('user')->id();
             $transaction = Pengaduan::create($validatedData);
             ResponPengaduan::create([
                 'pengaduan_id' => $transaction->id,
