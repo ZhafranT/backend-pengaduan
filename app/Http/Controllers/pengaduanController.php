@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\ResponPengaduan;
 use App\Models\Pengaduan;
 use App\Exports\PengaduanExport;
@@ -10,6 +11,7 @@ use App\Exports\PengaduanDoneExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
 use App\Helper\ApiFormatter;
+use Auth;
 use DB;
 use PDF;
 
@@ -265,7 +267,7 @@ class pengaduanController extends Controller
                 'jenisTuntutan' => 'required',
                 'kronologisPengaduan' => 'required',
             ]);
-            $validatedData['user_id'] = auth()->user()->id;
+            $validatedData['user_id'] = Auth::user();
             $transaction = Pengaduan::create($validatedData);
             ResponPengaduan::create([
                 'pengaduan_id' => $transaction->id,
