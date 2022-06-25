@@ -130,7 +130,7 @@
     <tbody class="atable">
         
         <tr>
-            <td>{{ $dme->pengaduan->waktuKejadianDitemukan}}</td>
+            <td>{{ date('d-m-Y', strtotime($dme->pengaduan->waktuKejadianDitemukan)) }}</td>
             <td>{{ $dme->pengaduan->tempatLokasiKejadian}}</td>
         </tr>
         

@@ -126,7 +126,7 @@
     <tbody class="atable">
         
         <tr>
-            <td>{{ $dpr->pengaduan->waktuKejadianDitemukan}}</td>
+            <td>{{ date('d-m-Y', strtotime($dpr->pengaduan->waktuKejadianDitemukan)) }}</td>
             <td>{{ $dpr->pengaduan->tempatLokasiKejadian}}</td>
         </tr>
         

@@ -145,7 +145,7 @@
     <tbody class="atable">
         
         <tr>
-            <td>{{ $ddo->pengaduan->waktuKejadianDitemukan}}</td>
+            <td>{{ date('d-m-Y', strtotime($ddo->pengaduan->waktuKejadianDitemukan)) }}</td>
             <td>{{ $ddo->pengaduan->tempatLokasiKejadian}}</td>
         </tr>
         
