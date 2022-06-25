@@ -270,8 +270,8 @@ class pengaduanController extends Controller
                 'kronologisPengaduan' => 'required',
             ]);
             
-            // $type = $request->file->extension();
-            // $imagedata = file_get_contents($request->file);
+            $a = $request->file('buktiPembelian')->store('fotobukti');
+            // $imagedata = file_get_contents($request->file('buktiPembelian'));
             // $base64 = 'data:image/' . $type . ';base64,' . base64_encode($imagedata);
 
             $transaction = Pengaduan::create([
@@ -298,7 +298,7 @@ class pengaduanController extends Controller
                 'jenisPengaduan' => $validatedData['jenisPengaduan'],
                 'waktuKejadianDitemukan' => $validatedData['waktuKejadianDitemukan'],
                 'tempatLokasiKejadian' => $validatedData['tempatLokasiKejadian'],
-                'buktiPembelian' => $validatedData['buktiPembelian'],
+                'buktiPembelian' => $a,
                 'saksi' => $validatedData['saksi'],
                 'kerugianMaterial' => $validatedData['kerugianMaterial'],
                 'kerugianFisik' => $validatedData['kerugianFisik'],
