@@ -270,8 +270,8 @@ class pengaduanController extends Controller
                 'kronologisPengaduan' => 'required',
             ]);
             
-            $type = $request->file()->extension();
-            $imagedata = file_get_contents($request->file());
+            $type = $request->file->extension();
+            $imagedata = file_get_contents($request->file);
             $base64 = 'data:image/' . $type . ';base64,' . base64_encode($imagedata);
 
             $transaction = Pengaduan::create([
