@@ -147,7 +147,7 @@
     <tbody class="atable">
         
         <tr>
-            <td><img src="{{ $dme->pengaduan->buktiPembelian }}" alt="-" style="width: 250%;"></td>
+            <td><img src="{{ $dme->pengaduan->buktiPembelian }}" alt="-" class="img-pengaduan-bukti"></td>
             <td>{{ $dme->pengaduan->saksi}}</td>
         </tr>
         

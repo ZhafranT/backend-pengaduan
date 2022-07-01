@@ -162,7 +162,7 @@
     <tbody class="atable">
         
         <tr>
-            <td><img src="{{ $ddo->pengaduan->buktiPembelian }}" alt="-" style="width: 250%;"></td>
+            <td><img src="{{ $ddo->pengaduan->buktiPembelian }}" alt="-" class="img-pengaduan-bukti"></td>
             <td>{{ $ddo->pengaduan->saksi}}</td>
         </tr>
         

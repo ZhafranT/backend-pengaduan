@@ -15,7 +15,10 @@
 </head>
 <body>
     <div class="form-group">
-        <h2 style="margin-bottom: 50px;">Laporan Pengaduan (Selesai)</h2>
+        <div>
+            <img src="../../../../public/asset/logo-kemendag.png" />
+            <h2 style="margin-bottom: 50px;">Laporan Pengaduan (Selesai)</h2>
+        </div>
 
         <table class="static" rules="all" border="1px" style="width: 100%;">
             <thead>
@@ -213,7 +216,7 @@
                 
                 <tr>
 
-                    <td><img src="{{ $ddo->pengaduan->buktiPembelian }}" alt="-" style="width: 50%;"></td>
+                    <td><img src="{{ $ddo->pengaduan->buktiPembelian }}" alt="-" class="img-pengaduan-bukti"></td>
                     <td>{{ $ddo->pengaduan->saksi}}</td>
                     
                 </tr>

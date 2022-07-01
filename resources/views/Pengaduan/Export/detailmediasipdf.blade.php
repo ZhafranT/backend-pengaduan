@@ -198,7 +198,7 @@
                 
                 <tr>
 
-                    <td><img src="{{ $dme->pengaduan->buktiPembelian }}" alt="-" style="width: 50%;"></td>
+                    <td><img src="{{ $dme->pengaduan->buktiPembelian }}" alt="-" class="img-pengaduan-bukti"></td>
                     <td>{{ $dme->pengaduan->saksi}}</td>
                     
                 </tr>

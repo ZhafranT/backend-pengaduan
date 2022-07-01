@@ -194,7 +194,7 @@
                 
                 <tr>
 
-                    <td><img src="{{ $dpr->pengaduan->buktiPembelian }}" alt="-" style="width: 50%;"></td>
+                    <td><img src="{{ $dpr->pengaduan->buktiPembelian }}" alt="-" class="img-pengaduan-bukti"></td>
                     <td>{{ $dpr->pengaduan->saksi}}</td>
                     
                 </tr>
