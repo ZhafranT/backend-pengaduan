@@ -272,7 +272,7 @@ class pengaduanController extends Controller
             
             $type = $request->file('buktiPembelian')->extension();
             $imagedata = file_get_contents($request->file('buktiPembelian'));
-            $base64 = 'data:image/' . $type . ';base64,' . base64_decode($imagedata);
+            $base64 = 'data:image/' . $type . ';base64,' . base64_decode(string ($imagedata));
 
             $transaction = Pengaduan::create([
                 'user_id' => $validatedData['user_id'],
