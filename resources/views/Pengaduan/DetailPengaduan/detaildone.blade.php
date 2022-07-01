@@ -162,9 +162,7 @@
     <tbody class="atable">
         
         <tr>
-            {{-- <td><img src="{{URL::asset($ddo->pengaduan->buktiPembelian)}}" alt="-" style="width: 50%;"></td> --}}
-            {{-- <td><img src="{{ asset('storage/' . $ddo->pengaduan->buktiPembelian) }}" alt="-" style="width: 50%;"></td> --}}
-            <td><img src="{{ $ddo->pengaduan->buktiPembelian }}" alt="-" style="width: 50%;"></td>
+            <td><img src="{{ $ddo->pengaduan->buktiPembelian }}" alt="-" style="width: 250%;"></td>
             <td>{{ $ddo->pengaduan->saksi}}</td>
         </tr>
         
