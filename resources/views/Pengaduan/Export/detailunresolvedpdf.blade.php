@@ -15,8 +15,11 @@
 </head>
 <body>
     <div class="form-group">
-        <h2 style="margin-bottom: 50px;">Laporan Pengaduan (Masuk)</h2>
-
+        <div class="head-form-group" >
+            <img src="https://www.kemendag.go.id/assets/favicon.png" class="img-pdf"/>            
+            <h2 style="margin-bottom: 50px;">Laporan Pengaduan (Masuk)</h2>
+        </div>
+        
         <table class="static" rules="all" border="1px" style="width: 100%;">
             <thead>
                 <tr>

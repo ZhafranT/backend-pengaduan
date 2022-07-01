@@ -686,3 +686,11 @@ main .date input[type="date"] {
 .img-pengaduan-bukti {
     width: 250px;
 }
+.head-form-group {
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+.img-pdf {
+    width: 100px;
+}
