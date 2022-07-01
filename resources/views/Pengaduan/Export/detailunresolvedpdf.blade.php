@@ -17,7 +17,7 @@
 <body>
     <div class="form-group">
         <div class="head-form-group" >
-            <img src="https://www.kemendag.go.id/assets/favicon.png" class="img-pdf"/>            
+            <img src="https://www.kemendag.go.id/assets/favicon.png" style="width: 90px; flex-direction: column; align-items: center; justify-content: center;" />
             <h2 style="margin-bottom: 50px;">Laporan Pengaduan (Masuk)</h2>
         </div>
         
@@ -195,7 +195,7 @@
             <tbody class="atable">
                 
                 <tr>
-                    <td><img src="{{ $dun->pengaduan->buktiPembelian }}" alt="-" class="img-pengaduan-bukti"></td>
+                    <td><img src="{{ $dun->pengaduan->buktiPembelian }}" alt="-" style="width: 250px;"></td>
                     <td>{{ $dun->pengaduan->saksi}}</td>
                 </tr>
                 

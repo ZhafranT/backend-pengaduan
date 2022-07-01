@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../styles/styles.css"> 
     <title>Detail Pengaduan</title>
     <style>
         table.static {
@@ -17,7 +16,7 @@
 <body>
     <div class="form-group">
         <div class="head-form-group" >
-            <img src="https://www.kemendag.go.id/assets/favicon.png" class="img-pdf"/>
+            <img src="https://www.kemendag.go.id/assets/favicon.png" style="width: 90px; flex-direction: column; align-items: center; justify-content: center;" />            
             <h2 style="margin-bottom: 50px;">Laporan Pengaduan (Mediasi)</h2>
         </div>
 
@@ -203,7 +202,7 @@
                 
                 <tr>
 
-                    <td><img src="{{ $dme->pengaduan->buktiPembelian }}" alt="-" class="img-pengaduan-bukti"></td>
+                    <td><img src="{{ $dme->pengaduan->buktiPembelian }}" alt="-" style="width: 250px;"></td>
                     <td>{{ $dme->pengaduan->saksi}}</td>
                     
                 </tr>
