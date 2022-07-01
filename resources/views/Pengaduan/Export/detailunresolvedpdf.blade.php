@@ -17,7 +17,7 @@
 <body>
     <div class="form-group">
         <div class="head-form-group" >
-            <img src="https://lh3.googleusercontent.com/-CQEEaZ4IKKo/YejU-vJ7MQI/AAAAAAAAUCY/x7c9YeqlD9ordUKEamzTn6cMrLjpq1T_ACNcBGAsYHQ/w1200-h630-p-k-no-nu/Kementerian%2BPerdagangan%2BTerbaru.png" style="width: 130px; flex-direction: column; align-items: center; justify-content: center;" />
+            <img src="https://lh3.googleusercontent.com/-CQEEaZ4IKKo/YejU-vJ7MQI/AAAAAAAAUCY/x7c9YeqlD9ordUKEamzTn6cMrLjpq1T_ACNcBGAsYHQ/w1200-h630-p-k-no-nu/Kementerian%2BPerdagangan%2BTerbaru.png" style="width: 165px; flex-direction: column; align-items: center; justify-content: center;" />
             <h2 style="margin-bottom: 50px;">Laporan Pengaduan (Masuk)</h2>
         </div>
         
