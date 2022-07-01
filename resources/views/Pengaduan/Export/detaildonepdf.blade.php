@@ -16,7 +16,7 @@
 <body>
     <div class="form-group">
         <div>
-            <img src="../../../../public/asset/logo-kemendag.png" />
+            <img src="https://www.kemendag.go.id/assets/favicon.png" />
             <h2 style="margin-bottom: 50px;">Laporan Pengaduan (Selesai)</h2>
         </div>
 
