@@ -73,7 +73,7 @@ class pengaduanController extends Controller
         ], compact('dtDone','dtcount_unresolve','dtcount_process','dtcount_mediasi','dtcount_done'));
     }
 
-    public function updateProcess(Request $request, $id)
+    public function updateProcess(Request $request, $id, $email)
     {
         try {
 
@@ -89,7 +89,8 @@ class pengaduanController extends Controller
                 'body' => "Laporan pengaduan yang anda ajukan telah diproses."
             ];
 
-            $tujuan_email = Pengaduan::with('user')->get('email');
+            // $tujuan_email = Pengaduan::with('user')->get('email');
+            $tujuan_email = User::findorfail($email);
             Mail::to($tujuan_email)->send(new SendEmail($isi_email));
 
             return back()->with('success', 'Data Berhasil Diproses!');
