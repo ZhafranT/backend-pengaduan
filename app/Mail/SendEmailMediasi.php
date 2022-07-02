@@ -9,6 +9,7 @@ use Illuminate\Queue\SerializesModels;
 
 class SendEmailMediasi extends Mailable
 {
+    public $isi_email;
     use Queueable, SerializesModels;
 
     /**
@@ -16,9 +17,9 @@ class SendEmailMediasi extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($isi_email)
     {
-        //
+        $this->isi_email = $isi_email;
     }
 
     /**
@@ -28,6 +29,8 @@ class SendEmailMediasi extends Mailable
      */
     public function build()
     {
-        return $this->view('Email.emailmediasi');
+        return $this->from('pelayanankonsumennotif@gmail.com')
+                    ->subject('Pengaduan Dimediasi')
+                    ->view('Email.emailmediasi');
     }
 }

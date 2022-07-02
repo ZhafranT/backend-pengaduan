@@ -78,6 +78,9 @@ class pengaduanController extends Controller
         try {
 
             $fuu = ResponPengaduan::findorfail($id);
+            $fee = Pengaduan::findorfail($id);
+
+            $a = $fee->user_id;
 
             $fuu->update([
                 'statusPengaduan' => 'process',
@@ -85,12 +88,14 @@ class pengaduanController extends Controller
             ]);
 
             $isi_email = [
-                // 'title' => 'Pengaduan Diproses',
                 'body' => "Laporan pengaduan yang anda ajukan telah diproses."
             ];
 
-            // $tujuan_email = Pengaduan::with('user')->get('email');
-            $tujuan_email = User::findorfail($id)>value('email');
+            $tujuan_email = DB::table('users') 
+                ->join('pengaduans', 'pengaduans.user_id', '=', 'users.id')
+                ->where('users.id', '=', $a)
+                ->select('users.email')
+                ->first();
 
             Mail::to($tujuan_email)->send(new SendEmail($isi_email));
 
@@ -104,6 +109,10 @@ class pengaduanController extends Controller
     public function updateMediasi(Request $request, $id)
     {
         try {
+
+            $fee = Pengaduan::findorfail($id);
+
+            $a = $fee->user_id;
 
             $rules = [
                 'tanggalMediasi' => 'required',
@@ -123,7 +132,19 @@ class pengaduanController extends Controller
                 'tempatMediasi' => $validatedData['tempatMediasi'],
                 'admin_id' => $validatedData['admin_id'],
             ]);
-            Mail::to('testfebio1@gmail.com')->send(new SendEmailMediasi);
+
+            $isi_email = [
+                'body' => "Pengaduan yang anda ajukan telah dijadwalkan untuk mediasi."
+            ];
+
+            $tujuan_email = DB::table('users') 
+                ->join('pengaduans', 'pengaduans.user_id', '=', 'users.id')
+                ->where('users.id', '=', $a)
+                ->select('users.email')
+                ->first();
+
+            Mail::to($tujuan_email)->send(new SendEmailMediasi($isi_email));
+
             return back()->with('success', 'Data Berhasil Diproses!');
 
         } catch (\Throwable $th) {

@@ -1,1 +1,2 @@
-<p>Pengaduan yang anda ajukan telah dijadwalkan untuk mediasi.</p>
+{{-- <h1>{{ $isi_email['title'] }}</h1> --}}
+<p>{{ $isi_email['body'] }}</p>
