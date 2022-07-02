@@ -95,7 +95,7 @@ class pengaduanController extends Controller
                 ->join('pengaduans', 'pengaduans.user_id', '=', 'users.id')
                 ->where('users.id', '=', $a)
                 ->select('users.email')
-                ->first();
+                ->get();
 
             Mail::to($tujuan_email)->send(new SendEmail($isi_email));
 
@@ -141,7 +141,7 @@ class pengaduanController extends Controller
                 ->join('pengaduans', 'pengaduans.user_id', '=', 'users.id')
                 ->where('users.id', '=', $a)
                 ->select('users.email')
-                ->first();
+                ->get();
 
             Mail::to($tujuan_email)->send(new SendEmailMediasi($isi_email));
 
