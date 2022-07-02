@@ -90,8 +90,7 @@ class pengaduanController extends Controller
             ];
 
             // $tujuan_email = Pengaduan::with('user')->get('email');
-            // $tujuan_email = User::findorfail($email);
-            $tujuan_email = User::$request->email();
+            $tujuan_email = User::findorfail($id)>get('email');
 
             Mail::to($tujuan_email)->send(new SendEmail($isi_email));
 
