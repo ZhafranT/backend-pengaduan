@@ -73,7 +73,7 @@ class pengaduanController extends Controller
         ], compact('dtDone','dtcount_unresolve','dtcount_process','dtcount_mediasi','dtcount_done'));
     }
 
-    public function updateProcess(Request $request, $id, $email)
+    public function updateProcess(Request $request, $id)
     {
         try {
 
