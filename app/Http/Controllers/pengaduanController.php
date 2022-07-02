@@ -13,6 +13,9 @@ use App\Http\Controllers\Controller;
 use App\Helper\ApiFormatter;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmail;
+use App\Mail\SendEmailMediasi;
 use DB;
 use PDF;
 
@@ -70,15 +73,24 @@ class pengaduanController extends Controller
         ], compact('dtDone','dtcount_unresolve','dtcount_process','dtcount_mediasi','dtcount_done'));
     }
 
-    public function updateProcess($id)
+    public function updateProcess(Request $request, $id)
     {
         try {
 
             $fuu = ResponPengaduan::findorfail($id);
+
             $fuu->update([
                 'statusPengaduan' => 'process',
                 'admin_id' => auth()->id(),
             ]);
+
+            $isi_email = [
+                // 'title' => 'Pengaduan Diproses',
+                'body' => "Laporan pengaduan yang anda ajukan telah diproses."
+            ];
+
+            $tujuan_email = Pengaduan::with('user')->get('email');
+            Mail::to($tujuan_email)->send(new SendEmail($isi_email));
 
             return back()->with('success', 'Data Berhasil Diproses!');
 
@@ -109,7 +121,7 @@ class pengaduanController extends Controller
                 'tempatMediasi' => $validatedData['tempatMediasi'],
                 'admin_id' => $validatedData['admin_id'],
             ]);
-
+            Mail::to('testfebio1@gmail.com')->send(new SendEmailMediasi);
             return back()->with('success', 'Data Berhasil Diproses!');
 
         } catch (\Throwable $th) {

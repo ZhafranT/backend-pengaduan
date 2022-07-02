@@ -1,0 +1,1 @@
+<p>Pengaduan yang anda ajukan telah dijadwalkan untuk mediasi.</p>
