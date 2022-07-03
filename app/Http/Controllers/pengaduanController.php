@@ -78,26 +78,26 @@ class pengaduanController extends Controller
         try {
 
             $fuu = ResponPengaduan::findorfail($id);
-            // $fee = Pengaduan::findorfail($id);
+            $fee = Pengaduan::findorfail($id);
 
-            // $a = $fee->user_id;
+            $a = $fee->user_id;
 
             $fuu->update([
                 'statusPengaduan' => 'process',
                 'admin_id' => auth()->id(),
             ]);
 
-            // $isi_email = [
-            //     'body' => "Laporan pengaduan yang anda ajukan telah diproses."
-            // ];
+            $isi_email = [
+                'body' => "Laporan pengaduan yang anda ajukan telah diproses."
+            ];
 
-            // $tujuan_email = DB::table('users') 
-            //     ->join('pengaduans', 'pengaduans.user_id', '=', 'users.id')
-            //     ->where('users.id', '=', $a)
-            //     ->select('users.email')
-            //     ->first();
+            $tujuan_email = DB::table('users') 
+                ->join('pengaduans', 'pengaduans.user_id', '=', 'users.id')
+                ->where('users.id', '=', $a)
+                ->select('users.email')
+                ->get();
 
-            // Mail::to($tujuan_email)->send(new SendEmail($isi_email));
+            Mail::to($tujuan_email)->send(new SendEmail($isi_email));
 
             return back()->with('success', 'Data Berhasil Diproses!');
 
@@ -110,9 +110,9 @@ class pengaduanController extends Controller
     {
         try {
 
-            // $fee = Pengaduan::findorfail($id);
+            $fee = Pengaduan::findorfail($id);
 
-            // $a = $fee->user_id;
+            $a = $fee->user_id;
 
             $rules = [
                 'tanggalMediasi' => 'required',
@@ -133,17 +133,17 @@ class pengaduanController extends Controller
                 'admin_id' => $validatedData['admin_id'],
             ]);
 
-            // $isi_email = [
-            //     'body' => "Pengaduan yang anda ajukan telah dijadwalkan untuk mediasi."
-            // ];
+            $isi_email = [
+                'body' => "Pengaduan yang anda ajukan telah dijadwalkan untuk mediasi."
+            ];
 
-            // $tujuan_email = DB::table('users') 
-            //     ->join('pengaduans', 'pengaduans.user_id', '=', 'users.id')
-            //     ->where('users.id', '=', $a)
-            //     ->select('users.email')
-            //     ->first();
+            $tujuan_email = DB::table('users') 
+                ->join('pengaduans', 'pengaduans.user_id', '=', 'users.id')
+                ->where('users.id', '=', $a)
+                ->select('users.email')
+                ->get();
 
-            // Mail::to($tujuan_email)->send(new SendEmailMediasi($isi_email));
+            Mail::to($tujuan_email)->send(new SendEmailMediasi($isi_email));
 
             return back()->with('success', 'Data Berhasil Diproses!');
 
