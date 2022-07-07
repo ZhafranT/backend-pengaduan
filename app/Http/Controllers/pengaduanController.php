@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmail;
 use App\Mail\SendEmailMediasi;
+use App\Mail\SendEmailDone;
 use DB;
 use PDF;
 
@@ -88,7 +89,15 @@ class pengaduanController extends Controller
             ]);
 
             $isi_email = [
-                'body' => "Laporan pengaduan yang anda ajukan telah diproses."
+                'title' => "Laporan pengaduan yang anda ajukan telah diproses.",
+                'created_at' => $fee->created_at,
+                'nama' => $fee->nama,
+                'noIdentitas' => $fee->noIdentitas,
+                'jenisProduk' => $fee->jenisProduk,
+                'detailProduk' => $fee->detailProduk,
+                'merkDagang' => $fee->merkDagang,
+                'type' => $fee->type,
+                'jenisPengaduan' => $fee->jenisPengaduan,
             ];
 
             $tujuan_email = DB::table('users') 
@@ -109,7 +118,7 @@ class pengaduanController extends Controller
     public function updateMediasi(Request $request, $id)
     {
         try {
-
+            
             $fee = Pengaduan::findorfail($id);
 
             $a = $fee->user_id;
@@ -134,7 +143,15 @@ class pengaduanController extends Controller
             ]);
 
             $isi_email = [
-                'body' => "Pengaduan yang anda ajukan telah dijadwalkan untuk mediasi."
+                'title' => "Laporan pengaduan yang anda ajukan telah dimediasi.",
+                'created_at' => $fee->created_at,
+                'nama' => $fee->nama,
+                'noIdentitas' => $fee->noIdentitas,
+                'jenisProduk' => $fee->jenisProduk,
+                'detailProduk' => $fee->detailProduk,
+                'merkDagang' => $fee->merkDagang,
+                'type' => $fee->type,
+                'jenisPengaduan' => $fee->jenisPengaduan,
             ];
 
             $tujuan_email = DB::table('users') 
@@ -157,6 +174,10 @@ class pengaduanController extends Controller
     public function updateReport(Request $request, $id)
     {
         try {
+            
+            $fee = Pengaduan::findorfail($id);
+
+            $a = $fee->user_id;
 
             $rules = [
                 'reportMediasi' => 'required',
@@ -174,6 +195,26 @@ class pengaduanController extends Controller
                 'reportMediasi'=>$validatedData['reportMediasi'],
                 'admin_id' => $validatedData['admin_id'],
             ]);
+
+            $isi_email = [
+                'title' => "Laporan pengaduan yang anda ajukan telah selesai.",
+                'created_at' => $fee->created_at,
+                'nama' => $fee->nama,
+                'noIdentitas' => $fee->noIdentitas,
+                'jenisProduk' => $fee->jenisProduk,
+                'detailProduk' => $fee->detailProduk,
+                'merkDagang' => $fee->merkDagang,
+                'type' => $fee->type,
+                'jenisPengaduan' => $fee->jenisPengaduan,
+            ];
+
+            $tujuan_email = DB::table('users') 
+                ->join('pengaduans', 'pengaduans.user_id', '=', 'users.id')
+                ->where('users.id', '=', $a)
+                ->select('users.email')
+                ->get();
+
+            Mail::to($tujuan_email)->send(new SendEmailDone($isi_email));
 
             return back()->with('success', 'Data Berhasil Diproses!');
             
