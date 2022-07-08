@@ -315,7 +315,7 @@ class DataSeeder extends Seeder
         ));
 
         $pengaduan8 = Pengaduan::create(array(
-            'user_id' => $user2->id,
+            'user_id' => $user3->id,
             'nama' => "arah",
             'jenisKelamin' => "wanita",
             'tanggalLahir' => new \DateTime,
@@ -508,7 +508,7 @@ class DataSeeder extends Seeder
         ));
 
         ResponPengaduan::create(array(
-            'admin_id' => $admin2->id,
+            'admin_id' => $admin3->id,
             'pengaduan_id' => $pengaduan8->id,
             'statusPengaduan' => "unresolved",
             'tanggalMediasi' => new \DateTime,
@@ -517,7 +517,7 @@ class DataSeeder extends Seeder
         ));
 
         ResponPengaduan::create(array(
-            'admin_id' => $admin2->id,
+            'admin_id' => $admin3->id,
             'pengaduan_id' => $pengaduan9->id,
             'statusPengaduan' => "unresolved",
             'tanggalMediasi' => new \DateTime,
@@ -526,7 +526,7 @@ class DataSeeder extends Seeder
         ));
 
         ResponPengaduan::create(array(
-            'admin_id' => $admin2->id,
+            'admin_id' => $admin3->id,
             'pengaduan_id' => $pengaduan10->id,
             'statusPengaduan' => "unresolved",
             'tanggalMediasi' => new \DateTime,
@@ -535,7 +535,7 @@ class DataSeeder extends Seeder
         ));
 
         ResponPengaduan::create(array(
-            'admin_id' => $admin2->id,
+            'admin_id' => $admin3->id,
             'pengaduan_id' => $pengaduan11->id,
             'statusPengaduan' => "unresolved",
             'tanggalMediasi' => new \DateTime,
